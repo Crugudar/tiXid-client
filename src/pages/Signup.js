@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 import {withAuth} from '../lib/AuthProvider'
 
 class Signup extends Component {
-  state = { email: "", password: "" };
+  state = { username:"",email: "", password: "" };
 
   handleFormSubmit = async (event) => {
     event.preventDefault();
-    const { email, password } = this.state;
-    console.log('Signup -> form submit', { email, password });
-    this.props.signup({ email, password });
+    const {username, email, password } = this.state;
+    console.log('Signup -> form submit', { username, email, password });
+    this.props.signup({ username, email, password });
   };
 
   handleChange = (event) => {
@@ -18,13 +18,22 @@ class Signup extends Component {
   };
 
   render() {
-    const { email, password } = this.state;
+    const { username, email, password } = this.state;
     return (
       <div>
         <h1>Sign Up</h1>
 
         <form onSubmit={this.handleFormSubmit}>
-          <label>Email:</label>
+        <label>Username:</label>
+          <input
+            type='text'
+            name='username'
+            value={username}
+            onChange={this.handleChange}
+          />
+
+         
+         <label>Email:</label>
           <input
             type='text'
             name='email'

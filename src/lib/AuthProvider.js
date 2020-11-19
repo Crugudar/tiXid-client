@@ -74,11 +74,11 @@ class AuthProvider extends React.Component {
 
   signup = async (user) => {
     //Desestructuramos el email y el password de (user)
-    const {email , password}=user
+    const {username, email , password}=user
     //Invocamos a auth y usamos su método signup, le pasaremos email y password
 
     try {
-      const user= await auth.signup({email, password});
+      const user= await auth.signup({username, email, password});
       this.setState({isLoggedin:true, user})
     } catch (error) {
       console.log(error)
