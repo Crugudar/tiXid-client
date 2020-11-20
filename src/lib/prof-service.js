@@ -31,7 +31,6 @@ class Prof {
     return this.profile.get(`/profile/cardList/${author}`, {author}).then(({ data }) => data);
  }
 
-
   
 }
 

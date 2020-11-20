@@ -8,7 +8,8 @@ import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Enter from "./pages/Enter"
 import Profile from "./pages/Profile";
-import EditCard from "./pages/EditCard"
+import EditCard from "./pages/EditCard";
+import Chat from './pages/Chat'
 import AnonRoute from "./components/AnonRoute";
 import PrivateRoute from "./components/PrivateRoute";
 import AnonPrivRoute from "./components/AnonPrivRoute";
@@ -34,6 +35,7 @@ class App extends Component {
             <AnonRoute exact path='/login' component={Login}/>
             <PrivateRoute exact path='/profile' component={Profile}/>            
             <PrivateRoute exact path='/editCard/:id' component={EditCard}/>
+            <PrivateRoute exact path='/game' component={Chat}/>
           </Switch>
         </div>
       </AuthProvider>

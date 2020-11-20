@@ -4,7 +4,7 @@ import AddCard from '../components/AddCard'
 import { withAuth } from '../lib/AuthProvider'
 import Prof from '../lib/prof-service'
 import { Link } from 'react-router-dom'
-import EditCard from "../pages/EditCard"
+
 
 
 class Profile extends Component{
@@ -60,7 +60,7 @@ class Profile extends Component{
     <div >
           {this.state.cards &&
             this.state.cards.map((eachCard) => {
-              {/* console.log(eachCard) */}
+            
               return (
 
               <div key={eachCard._id}>

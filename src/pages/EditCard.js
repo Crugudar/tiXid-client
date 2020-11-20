@@ -1,9 +1,7 @@
 import React, {Component} from 'react'
-import Navbar from '../components/Navbar/Navbar'
-import AddCard from '../components/AddCard'
 import { withAuth } from '../lib/AuthProvider'
 import Prof from '../lib/prof-service'
-import { Link } from 'react-router-dom'
+
 
 
 class EditCard extends Component{

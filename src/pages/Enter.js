@@ -31,7 +31,7 @@ console.log(props)
                                 {(!props.isLoggedin) ? <>
                                 <Link to='/login'><button className='btn-inputs'>Login</button></Link>
                                 <p className="mt-2">¿Aún no estás registrado? <Link to ='/signup'> Registrate </Link></p></>
-                                : <><Link to='/rooms'><button className='btn-inputs'>Jugar</button></Link></>}
+                                : <><Link to='/game'><button className='btn-inputs'>Jugar</button></Link></>}
                             </div>
                             </div>
                             

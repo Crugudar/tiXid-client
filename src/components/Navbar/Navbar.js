@@ -6,7 +6,7 @@ import "./Navbar.css"
 
 class Navbar extends Component {
   render() {
-    const { user, logout, isLoggedin } = this.props;
+    const { user, logout} = this.props;
 
       
     return (
