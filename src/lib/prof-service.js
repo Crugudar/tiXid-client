@@ -28,7 +28,23 @@ class Prof {
     return this.profile.get(`/profile/cardList/${author}`, {author}).then(({ data }) => data);
  }
 
+ handleUpload = async (theFile) => {
+  console.log("file in service: " , theFile)
 
+  try {
+      const res = await this.profile.post("/profile/upload", theFile)
+      return res.data;
+  } catch (error) {
+      console.log(error)
+  }
+}
+
+addPhoto({image, author}) {
+  console.log('serviceeeeeeeeeeeeeeeeeeeee',author, image);
+ return this.profile.post(`/profile/addPhoto/${author}`, {author, image})
+ .then(({ data }) => data);
+
+}
   
 }
 
