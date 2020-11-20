@@ -1,27 +1,39 @@
-import React, { Component } from "react";
-
+import React, {Component} from 'react'
+import Navbar from '../components/Navbar/Navbar'
+import AddCard from '../components/AddCard'
+import { withAuth } from '../lib/AuthProvider'
 import Prof from '../lib/prof-service'
+import { Link } from 'react-router-dom'
 
-class AddCard extends Component {
 
-  constructor(props){
+class EditCard extends Component{
+
+  constructor(props) {
+
+    console.log(props)
     super(props);
-    
-    this.state = { 
-      image:"",name: "", 
-      author:props.user._id
-    };
+    this.state = {
+        name:"",
+        image:"",
+        id:this.props.match.params.id
+    }
 
-  }
+    console.log('esto viene de props', this.props.match.params.id)
+      
+    };
+    
   
 
   handleFormSubmit = async (event) => {
     event.preventDefault();
-    const {image, name, author } = this.state;
-    console.log('uploadimage -> form submit', { image, name, author });
-    Prof.addCard({image, name, author });
+    const {id, image, name } = this.state;
+
+    console.log('esto es lo que hay en el estado',this.state)
+    console.log('uploadimage -> form submit', { id, image, name });
+    Prof.editCard({id, image, name });
     
     this.setState({ image:"",name: ""});
+    this.props.history.push("/profile");
 
     console.log(this.props)
     
@@ -32,11 +44,12 @@ class AddCard extends Component {
     this.setState({ [name]: value });
   };
 
-  render() {
+  
+  render(){
     const { image, name } = this.state;
     return (
       <div>
-        <h1>Create your Card</h1>
+        <h1>Edit</h1>
 
         <form onSubmit={this.handleFormSubmit}>
         <label>Name:</label>
@@ -62,9 +75,9 @@ class AddCard extends Component {
         </form>
 
         
-      </div>
+      </div> 
     );
-  }
 }
+};
 
-export default AddCard ;
+export default withAuth(EditCard);

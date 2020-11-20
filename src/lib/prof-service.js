@@ -8,23 +8,26 @@ class Prof {
     });
   }
 
-  addCard({image,  name, author }) {
+  addCard({image, name, author }) {
     
     return this.profile
       .post("/profile/addCard", {image,  name, author })
       .then(({ data }) => data);
   }
 
-  editCard({_id, image,  name }) {
-    return this.profile.post(`/profile/editCard/${_id}`, {image,  name }).then(({ data }) => data);
+  editCard({id, image, name }) {
+
+    console.log('aquí ha llegado a service',id)
+    return this.profile.post(`/profile/editCard/${id}`, {id, image, name}).then(({ data }) => data);
   }
 
-  deleteCard(_id) {
-    return this.profile.get(`/profile/deleteCard/${_id}`, {}).then(({ data }) => data);
+  deleteCard(cardId, userId) {
+    console.log('serviceeeeeeeeeeeeeeeeeeeee',userId);
+    return this.profile.delete(`/profile/deleteCard/${userId}/${cardId}`, {cardId, userId}).then(({ data }) => data);
   }
 
   cardList(author){
-    console.log('serviceeeeeeeeeeeeeeeeeeeee',author);
+   
     return this.profile.get(`/profile/cardList/${author}`, {author}).then(({ data }) => data);
  }
 
