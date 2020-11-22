@@ -3,28 +3,33 @@ import Navbar from '../components/Navbar/Navbar'
 import AddCard from '../components/AddCard'
 import { withAuth } from '../lib/AuthProvider'
 import Prof from '../lib/prof-service'
+import { Link } from 'react-router-dom'
+import EditCard from "../pages/EditCard"
 
 
 class Profile extends Component{
 
   constructor(props) {
+
+    console.log('props del perfil',props)
     super(props);
     this.state = {
       cards:[] ,
       user:props.user,
-      image: ""
+      image: "",
+      userId:props.user._id,
     };
     
   }
 
   componentDidMount(){
-    console.log('Lo ha pedido Lean', this.props.history)
     
     return Prof.cardList(this.state.user._id)
     .then((resp) =>{
-      console.log(resp)
+      // console.log(resp)
     this.setState({
       cards: resp,
+      
     })}
   )
   .catch((err) => console.log(err));
@@ -75,6 +80,21 @@ handlePhotoSubmit = async (event) => {
 
 };
 
+  delete (e, card){
+
+
+    console.log(this.state.user._id)
+     Prof.deleteCard(card.eachCard._id, this.state.userId)
+     console.log('props del profile',this.props)
+      this.props.history.push("/profile");
+      window.location.reload()
+         
+  }
+
+
+  edit(){
+    Prof.editCard()
+  }
 
   render(){
     return (
@@ -92,16 +112,21 @@ handlePhotoSubmit = async (event) => {
     </div>
     
 
-    <div>
+    <div >
           {this.state.cards &&
             this.state.cards.map((eachCard) => {
+              {/* console.log(eachCard) */}
               return (
                 //<h1>{eachCard.name}</h1>
-                  
-                 <div>
-                <img src={eachCard.image} alt="peine"/>
-                <h1>{eachCard.name}</h1>
-              </div> 
+ 
+              <div key={eachCard._id}>
+              <img src={eachCard.image} alt="peine"/>
+              <h1>{eachCard.name}</h1>
+              <button onClick={(e)=>this.delete(e, {eachCard})}>Delete</button>
+              <Link to={`/editCard/${eachCard._id}`}><button>Edit</button></Link>
+              </div>
+
+                
               );
             })}
         </div>

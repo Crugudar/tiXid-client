@@ -6,10 +6,12 @@ class AddCard extends Component {
 
   constructor(props){
     super(props);
-    console.log('heyyoooooooooooooooo',props.user._id)
-    this.state = { image:"",name: "", author:props.user._id};
+    
+    this.state = { 
+      image:"",name: "", 
+      author:props.user._id
+    };
 
-    console.log(this.state)
   }
   
 
