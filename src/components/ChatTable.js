@@ -4,10 +4,7 @@ import React, {Component} from 'react'
 
 class ChatTable extends Component {
 
-  constructor(props) {
-    super(props)
-    
-  }
+  
 
   render() {
     return (

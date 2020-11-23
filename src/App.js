@@ -9,11 +9,11 @@ import Login from "./pages/Login";
 import Enter from "./pages/Enter"
 import Profile from "./pages/Profile";
 import EditCard from "./pages/EditCard";
-import Chat from './pages/Chat.js'
+import Game from './pages/Game.js'
 import AnonRoute from "./components/AnonRoute";
 import PrivateRoute from "./components/PrivateRoute";
 import AnonPrivRoute from "./components/AnonPrivRoute";
-import ChatRoom from "./components/ChatRoom";
+
 
 
 
@@ -36,7 +36,7 @@ class App extends Component {
             <AnonRoute exact path='/login' component={Login}/>
             <PrivateRoute exact path='/profile' component={Profile}/>            
             <PrivateRoute exact path='/editCard/:id' component={EditCard}/>
-            <PrivateRoute exact path='/game' component={Chat}/>
+            <PrivateRoute exact path='/game' component={Game}/>
           </Switch>
        
       </AuthProvider>

@@ -2,6 +2,7 @@ import React from "react";
 import auth from "./auth-service"; // Importamos funciones para llamadas axios a la API
 const { Consumer, Provider } = React.createContext();
 
+
 // HOC para crear Consumer
 // el componente withAuth recibe un componente como argumento y nos devuelve un componente con el mismo componente dentro de un <Consumer /> con las propiedades user e isLoggedin (state), y los métodos login, signup y logout (this)
 const withAuth = (WrappedComponent) => {
@@ -124,6 +125,8 @@ class AuthProvider extends React.Component {
     }
     return this.auth.get("/game/deck").then(({ data }) => data);
   }
+
+
 
   render() {
     // destructuramos isLoading, isLoggedin y user de this.state y login, logout y signup de this

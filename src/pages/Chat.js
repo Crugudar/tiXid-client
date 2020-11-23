@@ -7,7 +7,9 @@ import Hand from '../components/Hand'
 
 import {withAuth} from '../lib/AuthProvider'
 
-const socket = io("http://localhost:4000", {
+
+
+  const socket = io("http://localhost:4000", {
         transports: ["websocket", "polling"]})
 
 
@@ -21,22 +23,27 @@ class Chat extends Component {
     }
 }
   componentDidMount(){
-
-    socket.emit('connection', (socket,this.props.user._id))
-
-    socket.on('numberOfSockets', (sockUser)=>{
-      console.log('you are',sockUser)
+    socket.on('num',(data)=>{
+      console.log('heyyyyyy',data)
     })
-  //   socket.emit("join", { name, room }, (error) => {
-  //     if (error) {
-  //       alert(error);
-  //     }
-  // })
+    
+    socket.on('connectToRoom',function(data) {
+      document.body.innerHTML = '';
+      document.write(data);
+    })
+  //   socket.emit('hola', { user:this.props.user._id})
+    
+  //   socket.on('hola', (data)=>{
+  //     console.log(data)
+  //   })
   }
 
 
   render(){
-    
+    // socket.emit('hola', (socket,this.props.user._id))
+    // socket.on('welcomeMessage', (data)=>{
+    //   console.log(data)
+    // })
     return (
       <>
       <div>

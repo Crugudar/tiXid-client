@@ -1,13 +1,10 @@
 import React from "react";
 import { withAuth } from "../lib/AuthProvider";
 import Navbar from "../components/Navbar/Navbar";
-import io from "socket.io-client";
 import { Link } from "react-router-dom";
 import "../pages/login&signup.css";
 
-const socket = io("http://localhost:4000", {
-  transports: ["websocket", "polling"],
-});
+
 
 function Enter(props) {
   return (

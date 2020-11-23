@@ -1,15 +1,29 @@
 import React, {Component} from "react";
-import {withAuth} from '../lib/AuthProvider'
-import auth from '../lib/auth-service'
+import { Link } from "react-router-dom";
+import io from 'socket.io-client';
+import ChatTable from '../components/ChatTable'
+import GameTable from '../components/GameTable';
 import '../components/Hand.css'
+import auth from '../lib/auth-service'
+
+import {withAuth} from '../lib/AuthProvider'
 
 
-class Hand extends Component {
 
-    constructor(props) {
-      super(props)
-      
-      this.state = {
+  const socket = io("http://localhost:4000", {
+        transports: ["websocket", "polling"]})
+
+
+class Game extends Component {
+
+  constructor(props) {
+    
+    super(props)
+    this.state = {
+      name: null,
+      messages: [],
+      newMessage: '',
+        user:this.props.user,
         cards:[],
         playerhands:{
             player1:[],
@@ -19,18 +33,47 @@ class Hand extends Component {
         },
         
         visible:[],
-        selected:[]
-      }
-  }
+        selected:[],
+        players:[]
+       
+    }
+}
 
+//Lo que ocurre cuando se forma el componente
   componentDidMount(){
-      
+    
+    socket.emit('user',(this.props.user._id));
+    
+    socket.on('user', (data)=>{
+        this.setState({
+            players:[...this.state.players, data]
+            
+        })
+        console.log(this.state.players) 
+    })
+
+    socket.on('chachi',(data)=>{
+      console.log('heyyyyyy',data)
+    })
+
+   
+    
+    //recibe los mensajes del back
+    socket.on('chat', message => {
+        message.key = JSON.stringify(message)
+        console.log(message)
+        this.setState({
+        messages:[...this.state.messages, message]
+        }) 
+    })
+    //trae la baraja entera
     return auth.bringDeck()
     .then((resp) =>{
     this.setState({
       cards: resp, 
     })
     })
+    //reparte cartas entre jugadores
     .then(() =>{
     let manos=this.dealHand(this.state.cards,4)
     console.log(manos)
@@ -43,9 +86,37 @@ class Hand extends Component {
         }
     })
     })
-    
   }
+
   
+  
+
+    //cierra el socket si te vas
+    componentWillUnmount() {
+        socket.close()
+    }
+    //envía mensajes al back
+        handleSubmit(event) {
+        event.preventDefault()
+        socket.emit('chat', {
+            userId:this.props.user._id,
+            name: this.props.user.username,
+            message: this.state.newMessage,
+            timestamp: new Date().toISOString()
+        })
+        this.setState({
+            newMessage: ''
+        })
+        
+        }
+    //setea los mensajes en el estado para que se guarden
+    setNewMessage(event) {
+    this.setState({
+        newMessage: event.target.value,
+        
+    })
+    }
+    //función repartidora de cartas
     dealHand =(arr,hands)=>{
 
         function shuffleArray(arr) {
@@ -56,19 +127,19 @@ class Hand extends Component {
         arr[j] = temp;
         }
     }
-    shuffleArray(arr);
+        shuffleArray(arr);
 
-    Array.prototype.chunk = function (n) {
+        Array.prototype.chunk = function (n) {
             if (!this.length) {
             return [];
             }else{return [this.slice(0, n)].concat(this.slice(n).chunk(n));}
             
         };
    
-    return arr.chunk(arr.length / 4);
+        return arr.chunk(arr.length / 4);
     }
 
-    
+    //termina función repartidora de cartas
     selectCard(url){
 
     }
@@ -76,13 +147,17 @@ class Hand extends Component {
     
 
 
+
   render(){
-    this.state.visible.forEach(playerhand=>{
-        return playerhand
-    })
-    console.log('piripippppp',this.state.playerhands.player1[0]?.url)
+    
     return (
       <>
+      <div>
+        <div>
+            <GameTable/>
+        </div>
+        <div>
+        <>
       {this.state.playerhands.player1.length? (<>
       <h1>Hola esta es la mano</h1>
       <div className="allhands">
@@ -173,10 +248,38 @@ class Hand extends Component {
       </>):<p>Loading</p>}
         
       </>
+        </div>
+        <div className="ChatRoom">
+            <div>
+
+                <form action="" onSubmit={(e)=>this.handleSubmit(e)}>
+                    <label htmlFor=""> Message</label>
+                    <input id="message"
+                                type="text"
+                                label="Message"
+                                placeholder="Enter your Message"
+                                onChange={(e)=>this.setNewMessage(e)}
+                                value={this.state.newMessage}
+                                autoComplete="off"/>
+                        
+                    <button type="submit">Send</button>
+                    
+
+                </form>
+                <ChatTable messages={this.state.messages} user={this.state.user}/>
+
+                </div> 
+        </div>
+      </div>
+      <Link to='/'><button >Get out</button></Link>
+       
+      </>
         
       
-        
-    )}
-} 
+    )
+}
+}
 
-export default withAuth(Hand);
+
+
+export default withAuth(Game)
