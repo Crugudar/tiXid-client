@@ -21,10 +21,10 @@ class Login extends Component {
     const { email, password } = this.state;
 
     return (
-      <div>
-        <h1>Login</h1>
-
-        <form onSubmit={this.handleFormSubmit}>
+      <div className="authform">
+        <div className="inputs">
+        <form onSubmit={this.handleFormSubmit} className="enterForm">
+        
           <label>Email:</label>
           <input
             type='text'
@@ -40,15 +40,20 @@ class Login extends Component {
             value={password}
             onChange={this.handleChange}
           />
-
-          <input type='submit' value='Login' />
+       
+          <input  type='submit' value='Login' />
+           <div>
+            
+        <Link to={'/signup'} className="link">Don't have an account?</Link>
+        
+        </div>
         </form>
+        </div>
+         
+        
 
        
-        <div>
-             <Link to={'/signup'}>Don't have an account?</Link>
-        </div>
-        
+       
       </div>
     );
   }

@@ -1,0 +1,68 @@
+
+
+.authform{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url('../images/dixit-board-game-box-art.jpg');
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+.enterForm{
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(251, 232, 210, 0.746);
+    border-radius:5rem ;
+    width: 20rem;
+    height: 30rem;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+   
+}
+
+.inputs{
+    display: flex;
+    flex-direction: column;   
+    
+}
+
+.link {
+  text-decoration: none; 
+  color: rgb(95, 20, 20); 
+}
+
+input[type = submit]{
+    background-color: #8a2a1fa4;
+    border: none;
+    text-decoration: none;
+    color: white;
+    padding:1rem;
+    margin: 1rem;
+    cursor: pointer;
+    width: 15rem;
+ }
+
+ input[type = text],
+ input[type = password]{
+    border-top: 1px solid #d2bb7a;
+    border-bottom: 1px solid #d2bb7a;
+    text-align: center;
+    border-right: none;
+    border-left: none;
+    background-color: rgba(210, 105, 30, 0.219);
+    margin:1rem;
+    color:rgb(95, 20, 20); 
+    font-size: 1.3rem;
+    width: 15rem;
+  
+ }
+
+ label{
+    color:rgb(95, 20, 20); 
+    margin:0.3rem;
+    font-size: 1.3rem;
+ }

@@ -6,20 +6,33 @@ import "./Navbar.css"
 
 class Navbar extends Component {
   render() {
-    const { user, logout, isLoggedin } = this.props;
+    const { user, logout} = this.props;
 
       
     return (
       <nav className="navbar">
-     
-
-     
-        <Link to={"/"} id="home-btn">
-          <h4>tiXid</h4>
-        </Link>
+        <div className="nav">
+            <input type="checkbox" id="nav-check"/>
+              <div className="nav-header">
+                <div className="nav-title">
+                  <Link to={"/"} id="home-btn">
+                    <h4>tiXid</h4>
+                  </Link>
+                </div>
+              </div>
+  
+          <div className="nav-btn">
+            <label for="nav-check">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+          </div>
         
-          <>
+        
             <p className="navbar-user">Hello: {user.username}</p>
+
+           <div className="nav-links"></div> 
             <button className="navbar-button" onClick={logout}>
               Logout
             </button>
@@ -36,9 +49,9 @@ class Navbar extends Component {
               Game
             </button>
         </Link>
-           
-          </>
-        
+            </div>
+         
+       
         
       </nav>
   );
@@ -46,3 +59,26 @@ class Navbar extends Component {
 }
 
 export default withAuth(Navbar);
+{/* <div class="nav">
+  <input type="checkbox" id="nav-check">
+  <div class="nav-header">
+    <div class="nav-title">
+      JoGeek
+    </div>
+  </div>
+  <div class="nav-btn">
+    <label for="nav-check">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
+  </div>
+  
+  <div class="nav-links">
+    <a href="//github.io/jo_geek" target="_blank">Github</a>
+    <a href="http://stackoverflow.com/users/4084003/" target="_blank">Stackoverflow</a>
+    <a href="https://in.linkedin.com/in/jonesvinothjoseph" target="_blank">LinkedIn</a>
+    <a href="https://codepen.io/jo_Geek/" target="_blank">Codepen</a>
+    <a href="https://jsfiddle.net/user/jo_Geek/" target="_blank">JsFiddle</a>
+  </div>
+</div> */}

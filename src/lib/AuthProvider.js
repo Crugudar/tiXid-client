@@ -2,6 +2,7 @@ import React from "react";
 import auth from "./auth-service"; // Importamos funciones para llamadas axios a la API
 const { Consumer, Provider } = React.createContext();
 
+
 // HOC para crear Consumer
 // el componente withAuth recibe un componente como argumento y nos devuelve un componente con el mismo componente dentro de un <Consumer /> con las propiedades user e isLoggedin (state), y los métodos login, signup y logout (this)
 const withAuth = (WrappedComponent) => {
@@ -30,7 +31,7 @@ const withAuth = (WrappedComponent) => {
 
 // Provider
 class AuthProvider extends React.Component {
-  state = { isLoggedin: false, user: null, isLoading: true, message: "" };
+  state = { isLoggedin: false, user: null, isLoading: true, message: "", cards:"" };
 
   componentDidMount() {
     // luego de que se monte el componente, llama a auth.me() que nos devuelve el usuario y setea los valores para loguearlo
@@ -114,6 +115,18 @@ class AuthProvider extends React.Component {
     //Seteamos la respuesta en el state y creamos un catch en el que guarde los mensajes de error (response.status, response.statusText, response.data.errorMessage)en un objeto.
  
   };
+
+  bringDeck= async()=>{
+    try {
+      let cardDeck=await auth.bringDeck();
+      this.setState({ cards:cardDeck });
+    } catch (error) {
+      console.log(error);
+    }
+    return this.auth.get("/game/deck").then(({ data }) => data);
+  }
+
+
 
   render() {
     // destructuramos isLoading, isLoggedin y user de this.state y login, logout y signup de this

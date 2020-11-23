@@ -116,7 +116,7 @@ handlePhotoSubmit = async (event) => {
     <div >
           {this.state.cards &&
             this.state.cards.map((eachCard) => {
-              {/* console.log(eachCard) */}
+            
               return (
                 //<h1>{eachCard.name}</h1>
  

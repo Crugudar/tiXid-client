@@ -1,0 +1,14 @@
+.allhands{
+    display:flex;
+    flex-direction: column;
+
+}
+
+.player{
+    display: flex;
+    flex-direction: row;
+}
+
+.card{
+    width:20%;
+}

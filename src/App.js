@@ -8,10 +8,12 @@ import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Enter from "./pages/Enter"
 import Profile from "./pages/Profile";
-import EditCard from "./pages/EditCard"
+import EditCard from "./pages/EditCard";
+import Game from './pages/Game.js'
 import AnonRoute from "./components/AnonRoute";
 import PrivateRoute from "./components/PrivateRoute";
 import AnonPrivRoute from "./components/AnonPrivRoute";
+
 
 
 
@@ -22,7 +24,7 @@ class App extends Component {
 
       <AuthProvider>
       {/* //Pondremos un div con un className "container" que engloble a los componentes */}
-        <div className='container'>
+        
         {/* //Renderizamos el componente Navbar para mostrarlo en todas las página */}
         
           {/* //Usaremos Switch para englobar las rutas */}
@@ -34,8 +36,9 @@ class App extends Component {
             <AnonRoute exact path='/login' component={Login}/>
             <PrivateRoute exact path='/profile' component={Profile}/>            
             <PrivateRoute exact path='/editCard/:id' component={EditCard}/>
+            <PrivateRoute exact path='/game' component={Game}/>
           </Switch>
-        </div>
+       
       </AuthProvider>
          
     );

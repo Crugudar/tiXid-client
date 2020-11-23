@@ -27,6 +27,10 @@ class Auth {
   me() {
     return this.auth.get("/auth/me").then(({ data }) => data);
   }
+
+  bringDeck(){
+    return this.auth.get("/game/deck").then(({ data }) => data);
+  }
 }
 
 const axiosRequestFunctions = new Auth();
