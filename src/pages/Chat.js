@@ -1,45 +1,64 @@
-
 import React, {Component} from "react";
+import { Link } from "react-router-dom";
+import io from 'socket.io-client';
+import ChatRoom from '../components/ChatRoom';
+import GameTable from '../components/GameTable';
+import Hand from '../components/Hand'
 
-import ChatName from '../components/ChatName'
-import ChatRoom from '../components/ChatRoom'
+import {withAuth} from '../lib/AuthProvider'
 
+const socket = io("http://localhost:4000", {
+        transports: ["websocket", "polling"]})
 
-
-
-
-
-
-require('./Chat.css')
 
 class Chat extends Component {
 
   constructor(props) {
+    
     super(props)
     this.state = {
       name: null
     }
+}
+  componentDidMount(){
 
-    this.handleSubmitName = this.handleSubmitName.bind(this)
+    socket.emit('connection', (socket,this.props.user._id))
+
+    socket.on('numberOfSockets', (sockUser)=>{
+      console.log('you are',sockUser)
+    })
+  //   socket.emit("join", { name, room }, (error) => {
+  //     if (error) {
+  //       alert(error);
+  //     }
+  // })
   }
 
-  render() {
+
+  render(){
+    
     return (
-      <div>{!this.state.name &&
-          <ChatName handleSubmitName={this.handleSubmitName}/>
-        }
-        {this.state.name && <ChatRoom name={this.state.name}/>
-        }
+      <>
+      <div>
+        <div>
+            <GameTable/>
+        </div>
+        <div>
+          <Hand/>
+        </div>
+        <div>
+          <ChatRoom/>  
+        </div>
       </div>
+      <Link to='/'><button >Get out</button></Link>
+       
+      </>
         
       
     )
-  }
-
-  handleSubmitName(name) {
-    this.setState({
-      name: name
-    })
-  }
 }
-export default Chat
+}
+
+
+
+export default withAuth(Chat)

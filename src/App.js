@@ -9,10 +9,11 @@ import Login from "./pages/Login";
 import Enter from "./pages/Enter"
 import Profile from "./pages/Profile";
 import EditCard from "./pages/EditCard";
-import Chat from './pages/Chat'
+import Chat from './pages/Chat.js'
 import AnonRoute from "./components/AnonRoute";
 import PrivateRoute from "./components/PrivateRoute";
 import AnonPrivRoute from "./components/AnonPrivRoute";
+import ChatRoom from "./components/ChatRoom";
 
 
 
@@ -23,7 +24,7 @@ class App extends Component {
 
       <AuthProvider>
       {/* //Pondremos un div con un className "container" que engloble a los componentes */}
-        <div className='container'>
+        
         {/* //Renderizamos el componente Navbar para mostrarlo en todas las página */}
         
           {/* //Usaremos Switch para englobar las rutas */}
@@ -37,7 +38,7 @@ class App extends Component {
             <PrivateRoute exact path='/editCard/:id' component={EditCard}/>
             <PrivateRoute exact path='/game' component={Chat}/>
           </Switch>
-        </div>
+       
       </AuthProvider>
          
     );

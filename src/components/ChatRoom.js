@@ -1,6 +1,14 @@
 import React, {Component} from 'react'
 import io from 'socket.io-client'
 import ChatTable from '../components/ChatTable.js'
+import {withAuth} from '../lib/AuthProvider'
+
+const socket = io("http://localhost:4000", {
+        transports: ["websocket", "polling"]})
+        
+
+    
+
 
 class ChatRoom extends Component {
 
@@ -9,29 +17,30 @@ class ChatRoom extends Component {
 
         this.state = {
         messages: [],
-        newMessage: ''
+        newMessage: '',
+        user:this.props.user
         }
 
-    this.socket = io("http://localhost:4000", {
-        transports: ["websocket", "polling"]
-    });
-
+    };
    
-}
+
 
   componentDidMount() {
-    this.socket.on('chat', message => {
+
+    
+    
+    socket.on('chat', message => {
       message.key = JSON.stringify(message)
       console.log(message)
-      
       this.setState({
         messages:[...this.state.messages, message]
     }) 
     })
-    }
-  
+    
+  }
+
     componentWillUnmount() {
-        this.socket.close()
+      socket.close()
     }
 
   setNewMessage(event) {
@@ -43,8 +52,9 @@ class ChatRoom extends Component {
 
   handleSubmit(event) {
     event.preventDefault()
-    this.socket.emit('chat', {
-      name: this.props.name,
+    socket.emit('chat', {
+      userId:this.props.user._id,
+      name: this.props.user.username,
       message: this.state.newMessage,
       timestamp: new Date().toISOString()
     })
@@ -71,7 +81,7 @@ class ChatRoom extends Component {
               
 
         </form>
-        <ChatTable messages={this.state.messages} />
+        <ChatTable messages={this.state.messages} user={this.state.user}/>
        
       </div>
     )
@@ -80,4 +90,4 @@ class ChatRoom extends Component {
   
 }
 
-export default ChatRoom;
+export default withAuth(ChatRoom);

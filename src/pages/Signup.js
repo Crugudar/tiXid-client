@@ -20,10 +20,11 @@ class Signup extends Component {
   render() {
     const { username, email, password } = this.state;
     return (
-      <div>
-        <h1>Sign Up</h1>
+      <div className="authform">
+       
 
-        <form onSubmit={this.handleFormSubmit}>
+        <form  onSubmit={this.handleFormSubmit}  className="enterForm"> 
+        <div className="inputs">
         <label>Username:</label>
           <input
             type='text'
@@ -50,10 +51,12 @@ class Signup extends Component {
           />
 
           <input type='submit' value='Signup' />
+          <Link className="link"to={"/login"}><p>Already have account?</p></Link>
+        {/* <Link to={"/login"}> Login</Link> */}
+        </div>
         </form>
 
-        <p>Already have account?</p>
-        <Link to={"/login"}> Login</Link>
+        
       </div>
     );
   }
