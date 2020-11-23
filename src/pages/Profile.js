@@ -5,6 +5,7 @@ import { withAuth } from '../lib/AuthProvider'
 import Prof from '../lib/prof-service'
 import { Link } from 'react-router-dom'
 import EditCard from "../pages/EditCard"
+import Points from '../components/Points'
 
 
 class Profile extends Component{
@@ -133,6 +134,7 @@ handlePhotoSubmit = async (event) => {
 
     
     <AddCard user={this.state.user}{...this.props}></AddCard>
+    <Points/>
     
     </div>
   )
