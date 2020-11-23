@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar/Navbar'
 import AddCard from '../components/AddCard'
 import { withAuth } from '../lib/AuthProvider'
 import Prof from '../lib/prof-service'
+import Points from '../components/Points'
 
 
 class Profile extends Component{
@@ -108,6 +109,7 @@ handlePhotoSubmit = async (event) => {
 
     
     <AddCard user={this.state.user}{...this.props}></AddCard>
+    <Points/>
     
     </div>
   )

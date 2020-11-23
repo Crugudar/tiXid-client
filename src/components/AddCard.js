@@ -67,21 +67,7 @@ class AddCard extends Component {
       <div>
         <h1>Create your Card</h1>
 
-        <form onSubmit={this.handleFormSubmit}>
-        <label>Name:</label>
-          <input
-            type='text'
-            name='name'
-            value={name}
-            onChange={this.handleChange}
-          />
-
          
-         <label>Image:</label>
-          <input type='file' name='image' onChange={event => this.handleFileUpload(event)} />
-          <button type="submit">Save the new Card</button>
-
-        </form>
 
         
       </div>
