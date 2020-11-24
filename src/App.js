@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import "./App.css";
-import { Switch } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import AuthProvider from "./lib/AuthProvider";
 
 
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
-import Enter from "./pages/Enter"
+import Enter from "./pages/Enter";
+import Home from './pages/Home'
 import Profile from "./pages/Profile";
 import EditCard from "./pages/EditCard";
 import Game from './pages/Game.js'
@@ -34,9 +35,12 @@ class App extends Component {
             <AnonPrivRoute exact path='/' component={Enter} />
             <AnonRoute exact path='/signup' component={Signup}/>
             <AnonRoute exact path='/login' component={Login}/>
+            <PrivateRoute exact path='/home' component={Home}/>   
             <PrivateRoute exact path='/profile' component={Profile}/>            
             <PrivateRoute exact path='/editCard/:id' component={EditCard}/>
-            <PrivateRoute exact path='/game' component={Game}/>
+            <Route exact path='/game' render={(props)=>(<Game {...props} />)}/>
+            
+            
           </Switch>
        
       </AuthProvider>

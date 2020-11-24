@@ -10,7 +10,7 @@ class GameTable extends Component {
 
   constructor(props) {
     super(props)
-
+    console.log('jijijijijijijijijij',props)
         this.state = {
         card1:"",
         card2:"",

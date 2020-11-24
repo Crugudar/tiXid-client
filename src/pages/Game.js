@@ -11,7 +11,7 @@ import {withAuth} from '../lib/AuthProvider'
 
 
   const socket = io("http://localhost:4000", {
-        transports: ["websocket", "polling"]})
+        transports: ["websocket","polling"]})
 
 
 class Game extends Component {
@@ -32,62 +32,85 @@ class Game extends Component {
             player4:[],  
         },
         
-        visible:[],
-        selected:[],
-        players:[]
+    yourhand:[],
+    selected:[],
+    info:[],
+    currentplayer:0,
        
     }
 }
 
+    
+
 //Lo que ocurre cuando se forma el componente
-  componentDidMount(){
+ componentDidMount(){
     
-    socket.emit('user',(this.props.user._id));
     
-    socket.on('user', (data)=>{
-        this.setState({
-            players:[...this.state.players, data]
-            
+       console.log('Hola');
+        socket.emit('hola', this.props.user) 
+        socket.on('welcome',async (data)=>{
+        console.log(`you are in room ${data.room}, and are player ${data.player}`)
+         this.setState({
+            currentplayer:data.player
         })
-        console.log(this.state.players) 
-    })
 
-    socket.on('chachi',(data)=>{
-      console.log('heyyyyyy',data)
-    })
+        console.log(this.state.currentplayer)
+        })
+      socket.on('otherusers',(data)=>{
+        console.log(data)
+      })
 
-   
-    
-    //recibe los mensajes del back
-    socket.on('chat', message => {
+      //recibe los mensajes del back
+      socket.on('chat', message => {
         message.key = JSON.stringify(message)
         console.log(message)
         this.setState({
         messages:[...this.state.messages, message]
-        }) 
-    })
-    //trae la baraja entera
-    return auth.bringDeck()
-    .then((resp) =>{
-    this.setState({
-      cards: resp, 
-    })
-    })
-    //reparte cartas entre jugadores
-    .then(() =>{
-    let manos=this.dealHand(this.state.cards,4)
-    console.log(manos)
-    this.setState({
-        playerhands:{
-            player1:manos[0],
-            player2:manos[1],
-            player3:manos[2],
-            player4:manos[3],  
-        }
-    })
-    })
-  }
+        })  })
+ 
 
+} 
+    // let validator=false;
+    // if(validator===false){
+    //     socket.emit('hola', this.props.user) 
+    //  socket.on('welcome',(data)=>{
+    //   console.log(`you are in room ${data.room}, and are player ${data.player}`)
+    //   this.setState({
+    //       currentplayer:data.player
+    //   })
+
+    //   console.log(this.state.currentplayer)
+    // })
+    //   socket.on('otherusers',(data)=>{
+    //     console.log(data)
+    //   })
+    // validator=true
+    // }
+
+
+
+
+  async getCards(){
+    const resp = await auth.bringDeck();
+    
+      this.setState({
+          cards: resp,
+      });
+      let manos = this.dealHand(this.state.cards, 4);
+      ;
+      this.setState({
+          playerhands: {
+              player1: manos[0],
+              player2: manos[1],
+              player3: manos[2],
+              player4: manos[3],
+          }
+      });
+      console.log(this.state.currentplayer)
+    this.assignHand(); 
+    
+    
+  }
   
   
 
@@ -107,6 +130,10 @@ class Game extends Component {
         this.setState({
             newMessage: ''
         })
+
+        
+   
+   
         
         }
     //setea los mensajes en el estado para que se guarden
@@ -140,109 +167,123 @@ class Game extends Component {
     }
 
     //termina función repartidora de cartas
-    selectCard(url){
 
+    //función que setea tu mano
+    assignHand(){
+
+        if(this.state.currentplayer===1){
+            this.setState({
+                yourhand:this.state.playerhands.player1
+            })
+        }else if(this.state.currentplayer===2){
+            this.setState({
+                yourhand:this.state.playerhands.player2
+            }) 
+        }else if(this.state.currentplayer===3){
+            this.setState({
+                yourhand:this.state.playerhands.player3
+            })
+        }else if(this.state.currentplayer===4){
+            this.setState({
+                yourhand:this.state.playerhands.player4
+            })
+        }
+       
+    }    
+    
+     selectCard(e){
+        const {name}=e.target
+
+        console.log(name)
+        
+        socket.emit('cardselected', name);
+
+        socket.on('selectedcards', (data)=>{
+                console.log('cartitaaaaaaaaaaaaaaaaas',data)    
+                   this.setState({
+                    selected:data,
+                }) 
+                console.log('estaditoooooooooooooooo',this.state.selected)              
+         })
+        
     }
 
-    
-
-
+ 
 
   render(){
     
+    // if(this.state.currentplayer===0){
+    //     console.log('Hola');
+    //  socket.emit('hola', this.props.user) 
+    //   socket.on('welcome',(data)=>{
+    //    console.log(`you are in room ${data.room}, and are player ${data.player}`)
+    //    this.setState({
+    //        currentplayer:data.player
+    //    })
+ 
+    //    console.log(this.state.currentplayer)
+    //  })
+    //    socket.on('otherusers',(data)=>{
+    //      console.log(data)
+    //    })
+  
+    //  }
+
+
     return (
-      <>
+    <>
+    {this.state.currentplayer? (
+    <>
       <div>
+      <div>
+          {this.state.info}
+      </div>
         <div>
-            <GameTable/>
+            {this.state.selected.length? <>
+                <div>
+                    <div><img src={this.state.selected[0]} alt=""/></div>
+                </div>
+                <div>
+                    <div><img src={this.state.selected[1]} alt=""/></div>
+                </div>
+                <div>
+                    <div><img src={this.state.selected[2]} alt=""/></div>
+                </div>
+                <div>
+                    <div><img src={this.state.selected[3]} alt=""/></div>
+                </div>
+            </>:<p>Wait for it</p>}
         </div>
+        <button onClick={()=>this.getCards()}> Get cards</button>
         <div>
         <>
-      {this.state.playerhands.player1.length? (<>
-      <h1>Hola esta es la mano</h1>
+      {this.state.yourhand.length? (<>
+      
       <div className="allhands">
-      <div className="player">
-        <h1>Player 1</h1>
-       
-            <div className="card">
-                <img src={this.state.playerhands.player1[0].url} alt=""/>
-                <button onClick={()=>this.selectCard()}>Select</button>
-            </div>
-        <div className="card">
-            <img src={this.state.playerhands.player1[1].url} alt=""/>
-            <button onClick={this.selectCard}>Select</button>
-        </div>
-        <div className="card">
-            <img src={this.state.playerhands.player1[2].url} alt=""/>
-            <button onClick={this.selectCard}>Select</button>
-        </div>
-        <div className="card">
-            <img src={this.state.playerhands.player1[3].url} alt=""/>
-            <button onClick={this.selectCard}>Select</button>
-        </div>
-       
-      </div>
-      <div className="player">
-        <h1>Player 2</h1>
-        
-        <div className="card">
-            <img src={this.state.playerhands.player2[0].url} alt=""/>
-            <button onClick={this.selectCard}>Select</button>
-        </div>
-        <div className="card">
-            <img src={this.state.playerhands.player2[1].url} alt=""/>
-            <button onClick={this.selectCard}>Select</button>
-        </div>
-        <div className="card">
-            <img src={this.state.playerhands.player2[2].url} alt=""/>
-            <button onClick={this.selectCard}>Select</button>
-        </div>
-        <div className="card">
-            <img src={this.state.playerhands.player2[3].url} alt=""/>
-            <button onClick={this.selectCard}>Select</button>
-        </div>
-        </div>
-      </div>
-      <div className="player">
-        <h1>Player 3</h1>
-              
-        <div className="card">
-            <img src={this.state.playerhands.player3[0].url} alt=""/>
-            <button onClick={this.selectCard}>Select</button>
-        </div>
-        <div className="card">
-            <img src={this.state.playerhands.player3[1].url} alt=""/>
-            <button onClick={this.selectCard}>Select</button>
-        </div>
-        <div className="card">
-            <img src={this.state.playerhands.player3[2].url} alt=""/>
-            <button onClick={this.selectCard}>Select</button>
-        </div>
-        <div className="card">
-            <img src={this.state.playerhands.player3[3].url} alt=""/>
-            <button onClick={this.selectCard}>Select</button>
-        </div>
-        </div>
       
       <div className="player">
-        <h1>Player 4</h1>
-        
+
+        <h1>Player {this.state.currentplayer}</h1>
+       
+            <div className="card">
+                <img src={this.state.yourhand[0].url} alt=""/>
+                <button name={this.state.yourhand[0].url} onClick={(e)=>this.selectCard(e)}>Select</button>
+            </div>
         <div className="card">
-            <img src={this.state.playerhands.player4[0].url} alt=""/>
-            <button onClick={this.selectCard}>Select</button>
+            <img src={this.state.yourhand[1].url} alt=""/>
+            <button name={this.state.yourhand[1].url} onClick={(e)=>this.selectCard(e)}>Select</button>
         </div>
         <div className="card">
-            <img src={this.state.playerhands.player4[1].url} alt=""/>
-            <button onClick={this.selectCard}>Select</button>
+            <img src={this.state.yourhand[2].url} alt=""/>
+            <button name={this.state.yourhand[2].url} onClick={(e)=>this.selectCard(e)}>Select</button>
         </div>
         <div className="card">
-            <img src={this.state.playerhands.player4[2].url} alt=""/>
-            <button onClick={this.selectCard}>Select</button>
+            <img src={this.state.yourhand[3].url} alt=""/>
+            <button name={this.state.yourhand[3].url} onClick={(e)=>this.selectCard(e)}>Select</button>
         </div>
-        <div className="card">
-            <img src={this.state.playerhands.player4[3].url} alt=""/>
-            <button onClick={this.selectCard}>Select</button>
-        </div>
+       
+      </div>
+     
       </div>
       
       </>):<p>Loading</p>}
@@ -274,8 +315,10 @@ class Game extends Component {
       <Link to='/'><button >Get out</button></Link>
        
       </>
-        
+    ):null}
       
+        
+    </>  
     )
 }
 }
