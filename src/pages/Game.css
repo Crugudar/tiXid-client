@@ -1,0 +1,21 @@
+.allhands{
+    display:flex;
+    flex-direction: column;
+
+}
+
+.player{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.card{
+    width:20%;
+    
+}
+
+.card>img{
+    height:300px;
+    width:190px;
+}
