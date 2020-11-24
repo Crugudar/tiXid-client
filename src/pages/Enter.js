@@ -8,9 +8,12 @@ import classes from '../components/BackgroundVideo.module.css'
 
 
 function Enter(props) {
+ /*  document.querySelector("#page").addEventListener('click', (e, checkbox = document.querySelector('.navinput'))=>{ 
+    if(checkbox.checked) { checkbox.checked = false; e.stopPropagation(); }
+    }); */
   const videoSource = "https://res.cloudinary.com/lemonade292/video/upload/v1606155635/videos%20tixid/VIDEO_Dixit_Boxart_seafhb.mp4"
   return (
-    <div>
+    <>
       {!props.isLoggedin ? (
             <>
          
@@ -28,10 +31,14 @@ function Enter(props) {
             
           </div>
         </div>
+        
         </>
       ) : (
         <>
           <Navbar />
+             
+       
+          
           <div className={classes.Container} >
             <video autoPlay="autoplay" loop="loop" muted className={classes.Video} >
                 <source src={videoSource} type="video/mp4" />
@@ -40,7 +47,7 @@ function Enter(props) {
 
             <div className={classes.Content}>
                 <div className={classes.SubContent} >
-                <p>Welcome to Dixit {props.user.username && props.user.username}.</p>
+                <p>Welcome to Dixit {props.user.username && props.user.username}!</p>
           <br />
          
             <Link to="/game">
@@ -49,9 +56,11 @@ function Enter(props) {
                 </div>
             </div>
         </div>
+        
+        
         </>
       )}
-    </div>
+    </>
   );
 }
 

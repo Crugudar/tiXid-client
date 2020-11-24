@@ -30,6 +30,7 @@ class Signup extends Component {
             type='text'
             name='username'
             value={username}
+            placeholder="Dixiter123"
             onChange={this.handleChange}
           />
 
@@ -39,6 +40,7 @@ class Signup extends Component {
             type='text'
             name='email'
             value={email}
+            placeholder="welcometo@dixit.com"
             onChange={this.handleChange}
           />
 
@@ -47,10 +49,11 @@ class Signup extends Component {
             type='password'
             name='password'
             value={password}
+            placeholder="******"
             onChange={this.handleChange}
           />
 
-          <input type='submit' value='Signup' />
+          <input className="signupbttn" type='submit' value='Signup' />
           <Link className="link"to={"/login"}><p>Already have account?</p></Link>
         {/* <Link to={"/login"}> Login</Link> */}
         </div>

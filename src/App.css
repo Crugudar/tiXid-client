@@ -8,8 +8,8 @@
 }
 
 nav.navbar { 
-  display: flex;
-  padding: 20px;
+  
+  
   background: #686de0; 
 }
 
@@ -19,7 +19,7 @@ nav.navbar .navbar-user{
 }
 
 button.navbar-button {
-  padding: 5px 20px;
+  padding: 0 20px;
   width: 100px;
   border-radius: 3px;
   margin: 0 10px;
