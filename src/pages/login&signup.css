@@ -4,7 +4,7 @@
     display:flex;
     align-items: center;
     justify-content: center;
-    background-image: url('../images/dixit-board-game-box-art.jpg');
+    background-image: url('../images/LoginBackgorund.jpg');
     width: 100%;
     background-repeat: no-repeat;
     background-size: cover;
@@ -13,38 +13,118 @@
 .enterForm{
     display: flex;
     flex-direction: column;
-    background-color: rgba(251, 232, 210, 0.746);
+    background-color: rgba(251, 232, 210, 0.90);
     border-radius:5rem ;
-    width: 20rem;
+    width: 32rem;
     height: 30rem;
     text-align: center;
     align-items: center;
     justify-content: center;
     font-size: 1.3rem;
-   
+    margin-top: 50px;
+    border: rgba(95, 20, 20, 0.9) 3px solid;
 }
 
-.inputs{
+.enterForm2{
     display: flex;
-    flex-direction: column;   
+    flex-direction: column;
+    background-color: rgba(251, 232, 210, 0.90);
+    border-radius:5rem ;
+    width: 32rem;
+    height: 30rem;
+    text-align: center;
+    justify-content: space-evenly;
+    font-size: 1.3rem; 
+    margin-top: 50px;
+    border: rgba(95, 20, 20, 0.9) 3px solid;
+}
+
+.enterForm2 h2{
+     color: rgb(95, 20, 20);
+     font-weight: bold; 
+     font-size: 2.2em;
     
 }
 
-.link {
-  text-decoration: none; 
-  color: rgb(95, 20, 20); 
+.loginlink{ 
+    text-decoration: none; 
+    color: rgb(95, 20, 20); 
+    font-size: 42px;
+    font-weight: bold;
+    padding: 10px 10px;
+    border: rgb(95, 20, 20) 2px solid;
+    margin: 0 25%;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: rgba(210, 105, 30, 0.219);
+}
+.signupbttn{
+    align-self: center;
+}
+.loginlink:hover {
+    background-color: rgb(95, 20, 20);
+    color: rgb(212, 189, 161)
 }
 
+.signuptext {
+    color: rgb(95, 20, 20);
+    
+}
+
+.signuplink {
+    text-decoration: none; 
+    color: rgb(95, 20, 20); 
+    cursor: pointer;
+    font-size: 1.2em;
+    font-weight: bold;
+    padding-left: 10px;
+    display: inline-block;
+    
+   
+  }
+
+  .signuplink::after{
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: rgb(95, 20, 20);
+    transition: width .3s;
+  }
+  .signuplink:hover::after {
+      /* border-bottom: rgb(95, 20, 20) 1px solid; */
+      width: 100%;
+  
+     
+      
+  }
+.inputs{
+    display: flex;
+    flex-direction: column;   
+   
+    
+}
+
+
 input[type = submit]{
-    background-color: #8a2a1fa4;
-    border: none;
+    border: rgb(95, 20, 20) 2px solid;
+    background-color: rgba(210, 105, 30, 0.219);
     text-decoration: none;
-    color: white;
-    padding:1rem;
+    color: rgb(95, 20, 20); 
+    padding:10px;
     margin: 1rem;
     cursor: pointer;
-    width: 15rem;
+    width: 10rem;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    
  }
+
+ input[type = submit]:hover {
+    background-color: rgb(95, 20, 20);
+    color: rgb(212, 189, 161)
+}
 
  input[type = text],
  input[type = password]{
@@ -57,12 +137,44 @@ input[type = submit]{
     margin:1rem;
     color:rgb(95, 20, 20); 
     font-size: 1.3rem;
-    width: 15rem;
-  
+    width: 18rem;
+    height: 2rem;
+    border-radius: 5px;
+    
  }
 
- label{
+.enterForm label{
     color:rgb(95, 20, 20); 
     margin:0.3rem;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
+    font-weight: bold;
  }
+
+ 
+
+ .link {
+    text-decoration: none; 
+    color: rgb(95, 20, 20); 
+    cursor: pointer;
+    font-size: 1.15em;
+    font-weight: bold;
+   
+    align-self: center;
+    display: inline-block;
+    margin-top: 10px;
+    
+   
+  }
+
+  .link::after{
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: rgb(95, 20, 20);
+    transition: width .3s;
+  }
+  .link:hover::after {
+      /* border-bottom: rgb(95, 20, 20) 1px solid; */
+      width: 100%;
+  }

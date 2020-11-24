@@ -29,6 +29,7 @@ class Login extends Component {
           <input
             type='text'
             name='email'
+            placeholder="welcometo@dixit.com"
             value={email}
             onChange={this.handleChange}
           />
@@ -37,6 +38,7 @@ class Login extends Component {
           <input
             type='password'
             name='password'
+            placeholder="******"
             value={password}
             onChange={this.handleChange}
           />

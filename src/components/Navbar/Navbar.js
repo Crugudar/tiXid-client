@@ -12,26 +12,7 @@ class Navbar extends Component {
     return (
       <nav className="navbar">
         <div className="nav">
-            <input type="checkbox" id="nav-check"/>
-              <div className="nav-header">
-                <div className="nav-title">
-                  <Link to={"/"} id="home-btn">
-                    <h4>tiXid</h4>
-                  </Link>
-                </div>
-              </div>
-  
-          <div className="nav-btn">
-            <label for="nav-check">
-                <span></span>
-                <span></span>
-                <span></span>
-            </label>
-          </div>
-        
-        
-            <p className="navbar-user">Hello: {user.username}</p>
-
+          
            <div className="nav-links"></div> 
             <button className="navbar-button" onClick={logout}>
               Logout
