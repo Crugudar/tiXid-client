@@ -4,7 +4,7 @@
     display:flex;
     align-items: center;
     justify-content: center;
-    background-image: url('../images/dixit-board-game-box-art.jpg');
+    background-image: url('../images/LoginBackgorund.jpg');
     width: 100%;
     background-repeat: no-repeat;
     background-size: cover;
@@ -13,17 +13,71 @@
 .enterForm{
     display: flex;
     flex-direction: column;
-    background-color: rgba(251, 232, 210, 0.746);
+    background-color: rgba(251, 232, 210, 0.90);
     border-radius:5rem ;
-    width: 20rem;
-    height: 30rem;
+    width: 32rem;
+    height: 27rem;
     text-align: center;
     align-items: center;
     justify-content: center;
     font-size: 1.3rem;
+    margin-top: 5%;
    
 }
 
+.enterForm2{
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(251, 232, 210, 0.90);
+    border-radius:5rem ;
+    width: 32rem;
+    height: 27rem;
+    text-align: center;
+    justify-content: space-evenly;
+    font-size: 1.3rem; 
+    margin-top: 5%;
+}
+
+.enterForm2 h2{
+     color: rgb(95, 20, 20);
+     font-weight: bold; 
+     font-size: 2.2em;
+    
+}
+
+.loginlink{ 
+    text-decoration: none; 
+    color: rgb(95, 20, 20); 
+    font-size: 42px;
+    font-weight: bold;
+    padding: 10px 10px;
+    border: rgb(95, 20, 20) 2px solid;
+    margin: 0 25%;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.loginlink:hover {
+    background-color: rgb(95, 20, 20);
+    color: rgb(212, 189, 161)
+}
+
+.signuptext {
+    color: rgb(95, 20, 20);
+}
+
+.signuplink {
+    text-decoration: none; 
+    color: rgb(95, 20, 20); 
+    cursor: pointer;
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+
+  .signuplink:hover {
+      border-bottom: rgb(95, 20, 20) 1px solid;
+      
+  }
 .inputs{
     display: flex;
     flex-direction: column;   
@@ -33,6 +87,7 @@
 .link {
   text-decoration: none; 
   color: rgb(95, 20, 20); 
+  cursor: pointer;
 }
 
 input[type = submit]{
