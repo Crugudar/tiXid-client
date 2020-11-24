@@ -14,8 +14,7 @@ function Enter(props) {
   const videoSource = "https://res.cloudinary.com/lemonade292/video/upload/v1606155635/videos%20tixid/VIDEO_Dixit_Boxart_seafhb.mp4"
   return (
     <>
-      {!props.isLoggedin ? (
-            <>
+      
          
         <div className=" authform">
         
@@ -32,34 +31,8 @@ function Enter(props) {
           </div>
         </div>
         
-        </>
-      ) : (
-        <>
-          <Navbar />
-             
-       
-          
-          <div className={classes.Container} >
-            <video autoPlay="autoplay" loop="loop" muted className={classes.Video} >
-                <source src={videoSource} type="video/mp4" />
-                Your browser does not support the video tag.
-            </video>
-
-            <div className={classes.Content}>
-                <div className={classes.SubContent} >
-                <p>Welcome to Dixit {props.user.username && props.user.username}!</p>
-          <br />
-         
-            <Link to="/game">
-              <button>Let's Play!</button>
-            </Link> 
-                </div>
-            </div>
-        </div>
         
-        
-        </>
-      )}
+      
     </>
   );
 }
