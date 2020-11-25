@@ -1,0 +1,32 @@
+.pointsform{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin:auto;
+    color:white;
+    font-size:20px;
+}
+
+
+
+
+  
+.pointsform div{
+  padding: 10px 0px;
+ 
+  
+  }
+.restOfPlayers{
+    display: flex;
+    flex-direction: row;
+}
+.playerColumn{
+margin:5px 10px;
+}
+
+/* #input1{
+    display:none;
+} */
+
+/* .patata:focus{ outline: 2px solid black}  */

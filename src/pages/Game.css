@@ -1,6 +1,20 @@
+.root{
+    display: flex;
+    flex-wrap: wrap;
+    background-color:rgb(210, 230, 126);
+    height:100vh;
+    background-image: url('../images/682.jpg');
+    background-repeat: repeat;
+    background-size: cover;
+}
+
 .allhands{
+    max-height: fit-content;
     display:flex;
     flex-direction: column;
+    text-align: center; 
+    justify-content: center;
+    width: 70%;
 
 }
 
@@ -10,12 +24,74 @@
     flex-wrap: wrap;
 }
 
-.card{
+.card, .selected{
     width:20%;
+    
+   
     
 }
 
 .card>img{
     height:300px;
     width:190px;
+    margin:10px;
+    -webkit-box-shadow: 5px 5px 15px 5px #FF8080, -9px 5px 15px 5px #FFE488, 12px 10px 15px 7px #E488FF, -10px 10px 15px 7px #FF616B, 14px 0px 0px -30px rgba(0,0,0,0.4); 
+    box-shadow: 5px 5px 15px 5px #FF8080, -9px 5px 15px 5px #FFE488, 12px 10px 15px 7px #E488FF, -10px 10px 15px 7px #FF616B, 14px 0px 0px -30px rgba(0,0,0,0.4);
+    border-radius: 5%;   
 }
+
+.selected>img{
+    height:300px;
+    width:190px;
+    margin:10px;
+    border-radius: 5%;  
+    -webkit-box-shadow: -9px 5px 15px 5px #FFE488, -7px -5px 15px 5px #8CFF85, 12px -5px 15px 5px #80C7FF, 14px 0px 0px -30px rgba(0,0,0,0); 
+    box-shadow: -9px 5px 15px 5px #FFE488, -7px -5px 15px 5px #8CFF85, 12px -5px 15px 5px #80C7FF, 14px 0px 0px -30px rgba(0,0,0,0);
+}
+
+.tableDefault{
+    min-height: 400px;
+     
+    text-align: center;
+    display:flex; 
+    justify-content: center;
+    width: 70%;
+    flex-direction:column;
+ 
+}
+.tableDefault>h1{
+ color: rgb(253, 253, 253);
+ display:flex; 
+ align-self:center;
+    
+}
+.ChatRoom{
+    float: right;
+   
+    width:30%;
+}
+.pointsdiv{
+    width: 30%;
+    float:right;
+}
+
+button{
+    border: rgb(255, 136, 0) 2px solid;
+    background-color: rgba(246, 167, 64, 0.74);
+    text-decoration: none;
+    color: rgb(255, 255, 255); 
+    padding:10px;
+    margin: 1rem;
+    cursor: pointer;
+    width: 10rem;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    
+}
+
+ button:hover {
+    background-color: rgb(95, 20, 20);
+    color: rgb(212, 189, 161)
+}
+

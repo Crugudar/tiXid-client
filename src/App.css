@@ -30,13 +30,3 @@ button.navbar-button {
   text-decoration: none;
 }
 
-.pointsform {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.pointsform div{
-padding: 15px;
-
-}

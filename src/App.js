@@ -9,6 +9,7 @@ import Login from "./pages/Login";
 import Enter from "./pages/Enter";
 import Home from './pages/Home'
 import Profile from "./pages/Profile";
+import Rules from "./pages/Rules";
 import EditCard from "./pages/EditCard";
 import Game from './pages/Game.js'
 import AnonRoute from "./components/AnonRoute";
@@ -39,6 +40,7 @@ class App extends Component {
             <PrivateRoute exact path='/profile' component={Profile}/>            
             <PrivateRoute exact path='/editCard/:id' component={EditCard}/>
             <Route exact path='/game' render={(props)=>(<Game {...props} />)}/>
+            <PrivateRoute exact path='/rules' component={Rules}/>
             
             
           </Switch>

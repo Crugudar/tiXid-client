@@ -78,11 +78,11 @@ class Game extends Component {
         })  })
         
         socket.on('selectedcards', (data)=>{
-            console.log('cartitaaaaaaaaaaaaaaaaas',data)    
+               
                this.setState({
                 selected:data,
             }) 
-            console.log('estaditoooooooooooooooo',this.state.selected)              
+                          
      })
 
 } 
@@ -116,6 +116,8 @@ class Game extends Component {
 
     //cierra el socket si te vas
     componentWillUnmount() {
+        console.log(this.state.players)
+        
         socket.close()
     }
     //envía mensajes al back
@@ -222,33 +224,33 @@ class Game extends Component {
   
 
     return (
-    <>
+    <div className="root">
     {this.state.currentplayer? (
     <>
-      <div>
-      <div>
-          {this.state.info}
-      </div>
-        <div className="player">
-            {this.state.selected.length? <>
-                <div className="card">
-                    <div><img src={this.state.selected[0]} alt=""/></div>
-                </div>
-                <div className="card">
-                    <div><img src={this.state.selected[1]} alt=""/></div>
-                </div>
-                <div className="card">
-                    <div><img src={this.state.selected[2]} alt=""/></div>
-                </div>
-                <div className="card">
-                    <div><img src={this.state.selected[3]} alt=""/></div>
-                </div>
-            </>:<p>Wait for it</p>}
-        </div>
-        <button onClick={()=>this.getCards()}> Get cards</button>
-        <div>
-        <>
-      {this.state.yourhand.length? (<>
+      
+                        <div className="tableDefault">
+                        <Link to='/'><button >Get out</button></Link>
+                            {this.state.selected.length? 
+                            <div className="player">
+                                <div className="selected">
+                                    <img src={this.state.selected[0]} alt=""/>
+                                </div>
+                                <div className="selected">
+                                    <img src={this.state.selected[1]} alt=""/>
+                                </div>
+                                <div className="selected">
+                                    <img src={this.state.selected[2]} alt=""/>
+                                </div>
+                                <div className="selected">
+                                    <img src={this.state.selected[3]} alt=""/>
+                                </div>
+                            </div>:<><h1 className="">Here you will see everybody's cards in each round</h1>
+                                        </>}
+                        </div>
+        
+        
+        <div className="pointsdiv"><Points players={this.state.players}/></div>
+        {this.state.yourhand.length? (<>
       
       <div className="allhands">
       
@@ -277,13 +279,10 @@ class Game extends Component {
         <button onClick={()=>this.sumbitTheChosenOne()}>Enviar</button>
       </div>
       
-      </>):<p>Loading</p>}
-        
-      </>
-        </div>
+      </>):<div className="allhands"><button onClick={()=>this.getCards()}> Get cards</button></div>}
         <div className="ChatRoom">
             <div>
-
+                <ChatTable messages={this.state.messages} user={this.state.user}/>
                 <form action="" onSubmit={(e)=>this.handleSubmit(e)}>
                     <label htmlFor=""> Message</label>
                     <input id="message"
@@ -295,21 +294,26 @@ class Game extends Component {
                                 autoComplete="off"/>
                         
                     <button type="submit">Send</button>
-                    
-
                 </form>
-                <ChatTable messages={this.state.messages} user={this.state.user}/>
-                <Points players={this.state.players}/>
                 </div> 
+
+       
+        <div>
+        <>
+      
+        
+      </>
         </div>
+        
       </div>
-      <Link to='/'><button >Get out</button></Link>
+      
+      
        
       </>
     ):null}
       
         
-    </>  
+    </div>  
     )
 }
 }

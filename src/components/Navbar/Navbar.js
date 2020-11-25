@@ -25,6 +25,13 @@ class Navbar extends Component {
             </button>
         </Link>
 
+           
+        <Link to={"/rules"} id="home-btn">
+            <button className="navbar-button" >
+              Rules
+            </button>
+        </Link>
+
         <Link to={"/"} id="home-btn">
             <button className="navbar-button" >
               Game
