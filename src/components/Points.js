@@ -6,12 +6,13 @@ class Points extends Component {
 
     constructor(props){
         super(props)
+        
         this.state = {
           players: [
-            { name: 'Julian', image: '', points: 0, id: '' },
-            { name: 'Claudia', image: '', points: 0, id: '' },
-            { name: 'Lean', image: '', points: 0, id: '' },
-            { name: 'Adria', image: '', points: 0, id: '' },
+            { name: 'Player1', image: '', points: 0, id: '' },
+            { name: 'Player2', image: '', points: 0, id: '' },
+            { name: 'Player3', image: '', points: 0, id: '' },
+            { name: 'Player4', image: '', points: 0, id: '' },
           ],
 
            arr1votedTo: 0,
