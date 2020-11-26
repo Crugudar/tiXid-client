@@ -5,6 +5,7 @@ import ChatTable from '../components/ChatTable'
 import '../pages/Game.css'
 import auth from '../lib/auth-service'
 import Points from '../components/Points'
+import '../components/Points.css'
 
 import {withAuth} from '../lib/AuthProvider'
 
@@ -421,62 +422,76 @@ class Game extends Component {
         
         <div className="pointsdiv">    
          
-            <form className="pointsform" onSubmit={this.bothFunctions}>
-             <div>
-                
-                <p>{this.state.playersArr[0].name}</p>
-                <p>{this.state.playersArr[0].points}</p>        
-                <h2>Initial player</h2>        
+        <form className="pointsform" onSubmit={this.bothFunctions}>
+             <div className="initial">
+                <h2>Initial player</h2> 
+                <div className="turn">
+                <p>{this.state.playersArr[0].name} : {this.state.playersArr[0].points} points</p>  
+                </div> 
+                      
+                      
               
              </div>
-             <div>
-                <label>{this.state.playersArr[1].name}</label>
-                <p>{this.state.playersArr[1].points}</p> 
+             <div className="restOfPlayers">
+             <div className="playerColumn">
+                <label>{this.state.playersArr[1].name} : {this.state.playersArr[1].points} points</label>
+                
                 <div>
-                    <input type='radio' name='arr1votedTo' value= '0'  onChange={this.handleChange} ></input>
                     <p>{this.state.playersArr[0].name}</p>
-                </div>
-                <div>
-                    <input type='radio' name='arr1votedTo' value='2' onChange={this.handleChange} ></input>
-                    <p>{this.state.playersArr[2].name}</p>
-                </div>
-                <div>
-                    <input type='radio' name='arr1votedTo' value='3' onChange={this.handleChange}></input>
-                    <p>{this.state.playersArr[3].name}</p>
-                </div>
-             </div>
-             <div>
-                <label>{this.state.playersArr[2].name}</label>
-                <p>{this.state.playersArr[2].points}</p> 
-                <div>
-                    <input type='radio' name='arr2votedTo' value ='0' onChange={this.handleChange}></input>
-                    <p>{this.state.playersArr[0].name}</p>
-                </div>
-                <div>
-                    <input type='radio' name='arr2votedTo' value='1' onChange={this.handleChange} ></input>
-                    <p>{this.state.playersArr[1].name}</p>
+                    <input id="input1" type='radio' name='arr1votedTo' value= '0'  onChange={this.handleChange} ></input>
                     
                 </div>
                 <div>
-                    <input type='radio' name='arr2votedTo' value='3' onChange={this.handleChange}></input>
+                    <p>{this.state.playersArr[2].name}</p>
+                    <input type='radio' name='arr1votedTo' value='2' onChange={this.handleChange} ></input>
+                    
+                </div>
+                <div>
                     <p>{this.state.playersArr[3].name}</p>
+                    <input type='radio' name='arr1votedTo' value='3' onChange={this.handleChange}></input>
+                    
                 </div>
              </div>
-             <div>
-                <label>{this.state.playersArr[3].name}</label>
-                <p>{this.state.playersArr[3].points}</p> 
+             <div className="playerColumn">
+                <label>{this.state.playersArr[2].name} : {this.state.playersArr[2].points} points</label>
+                
                 <div>
-                    <input type='radio' name='arr3votedTo' value='0' onChange={this.handleChange}></input>
                     <p>{this.state.playersArr[0].name}</p>
+                    <input type='radio' name='arr2votedTo' value ='0' onChange={this.handleChange}></input>
+                    
                 </div>
                 <div>
-                    <input type='radio' name='arr3votedTo' value='1' onChange={this.handleChange}></input>
                     <p>{this.state.playersArr[1].name}</p>
+                    <input type='radio' name='arr2votedTo' value='1' onChange={this.handleChange} ></input>
+                    
+                    
                 </div>
                 <div>
-                    <input type='radio' name='arr3votedTo' value='2' onChange={this.handleChange} ></input>
-                    <p>{this.state.playersArr[2].name}</p>
+                    <p>{this.state.playersArr[3].name}</p>
+                    <input type='radio' name='arr2votedTo' value='3' onChange={this.handleChange}></input>
+                    
                 </div>
+             </div>
+             <div className="playerColumn">
+                <label>{this.state.playersArr[3].name} : {this.state.playersArr[3].points} points</label>
+                
+                
+                <div>
+                    <p>{this.state.playersArr[0].name}</p>
+                    <input type='radio' name='arr3votedTo' value='0' onChange={this.handleChange}></input>
+                    
+                </div>
+                <div>
+                    <p>{this.state.playersArr[1].name}</p>
+                    <input type='radio' name='arr3votedTo' value='1' onChange={this.handleChange}></input>
+                    
+                </div>
+                <div>
+                    <p>{this.state.playersArr[2].name}</p>
+                    <input type='radio' name='arr3votedTo' value='2' onChange={this.handleChange} ></input>
+                    
+                </div>
+             </div>
              </div>
              <button >Let's Vote!</button>
             </form>
