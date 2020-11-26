@@ -23,9 +23,9 @@ class Chat extends Component {
     }
 }
   componentDidMount(){
-    socket.on('num',(data)=>{
-      console.log('heyyyyyy',data)
-    })
+    // socket.on('num',(data)=>{
+    //   console.log('heyyyyyy',data)
+    // })
     
     socket.on('connectToRoom',function(data) {
       document.body.innerHTML = '';

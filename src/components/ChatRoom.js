@@ -31,7 +31,7 @@ class ChatRoom extends Component {
     
     socket.on('chat', message => {
       message.key = JSON.stringify(message)
-      console.log(message)
+      // console.log(message)
       this.setState({
         messages:[...this.state.messages, message]
     }) 

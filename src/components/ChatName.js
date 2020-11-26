@@ -5,7 +5,7 @@ import {withAuth} from '../lib/AuthProvider'
 class ChatName extends Component {
 
   constructor(props) {
-    console.log(props)
+    // console.log(props)
     super(props)
     this.state = {
       user: props.user,

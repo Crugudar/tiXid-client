@@ -18,7 +18,7 @@ import {withAuth} from '../lib/AuthProvider'
 class Game extends Component {
 
   constructor(props) {
-    console.log(props)
+    
     super(props)
     this.state = {
         name: null,
@@ -65,22 +65,22 @@ class Game extends Component {
  componentDidMount(){
     
     
-       console.log('Hola');
+       
         socket.emit('hola',this.props.user) 
         socket.on('welcome',async (data)=>{
-        console.log(`Hello ${data.data} you are in room ${data.room}, and are player ${data.player}`)
+        //console.log(`Hello ${data.data} you are in room ${data.room}, and are player ${data.player}`)
          this.setState({
             currentplayer:data.player
         })
 
-        console.log(this.state.currentplayer)
+        
         })
-      socket.on('otherusers',(data)=>{
-        console.log(data)
-      })
+      // socket.on('otherusers',(data)=>{
+      //   console.log(data)
+      // })
 
       socket.on('players', (playersArr)=>{
-          console.log('hola', playersArr)
+         
 
           this.setState({
               playersArr: playersArr,
@@ -90,7 +90,7 @@ class Game extends Component {
       //recibe los mensajes del back
       socket.on('chat', message => {
         message.key = JSON.stringify(message)
-        console.log(message)
+        
         this.setState({
         messages:[...this.state.messages, message]
         })  })
@@ -124,7 +124,7 @@ class Game extends Component {
               player4: manos[3],
           }
       });
-      console.log(this.state.currentplayer)
+      
     this.assignHand(); 
     
     
@@ -134,7 +134,7 @@ class Game extends Component {
 
     //cierra el socket si te vas
     componentWillUnmount() {
-        console.log(this.state.players)
+        
         
         socket.close()
     }
@@ -268,10 +268,10 @@ class Game extends Component {
       let arr1temp = 0;
       let arr2temp = 0;
       let arr3temp = 0;
-      console.log('FUNCTION 22222222222222222222222222222')
-      console.log('arr1votedto ON F2', this.state.arr1votedTo)
-      console.log('arr2votedto ON F2', this.state.arr2votedTo)
-      console.log('arr3votedto ON F2', this.state.arr3votedTo)
+      // console.log('FUNCTION 22222222222222222222222222222')
+      // console.log('arr1votedto ON F2', this.state.arr1votedTo)
+      // console.log('arr2votedto ON F2', this.state.arr2votedTo)
+      // console.log('arr3votedto ON F2', this.state.arr3votedTo)
       if (this.state.arr1votedTo == 0) {
         arr0temp++;
       } else if (this.state.arr1votedTo == 2) {
@@ -295,11 +295,11 @@ class Game extends Component {
       } else if (this.state.arr3votedTo == 1) {
         arr1temp++;
       }
-      console.log('FUNCTION votes function')
-      console.log('arr0temp', arr0temp)
-      console.log('arr1temp', arr1temp)
-      console.log('arr2temp', arr2temp)
-      console.log('arr3temp', arr3temp)
+      // console.log('FUNCTION votes function')
+      // console.log('arr0temp', arr0temp)
+      // console.log('arr1temp', arr1temp)
+      // console.log('arr2temp', arr2temp)
+      // console.log('arr3temp', arr3temp)
       
       this.setState({
       arr0votesReceived: arr0temp,
@@ -309,11 +309,11 @@ class Game extends Component {
       })
     
 
-      console.log(' after set state', this)
-      console.log('arr0votesReceived', this.state.arr0votesReceived)
-      console.log('arr1votesReceived', this.state.arr1votesReceived)
-      console.log('arr2votesReceived', this.state.arr2votesReceived)
-      console.log('arr3votesReceived', this.state.arr3votesReceived)
+      // console.log(' after set state', this)
+      // console.log('arr0votesReceived', this.state.arr0votesReceived)
+      // console.log('arr1votesReceived', this.state.arr1votesReceived)
+      // console.log('arr2votesReceived', this.state.arr2votesReceived)
+      // console.log('arr3votesReceived', this.state.arr3votesReceived)
 
       //this.givePoints()
     };
@@ -325,14 +325,14 @@ class Game extends Component {
 
      //this.votesFunction()
 
-      console.log('FUNCTION GIVE POINTS')
-      console.log('arr1votedto', this.state.arr1votedTo)
-      console.log('arr2votedto', this.state.arr2votedTo)
-      console.log('arr3votedto', this.state.arr3votedTo)
-      console.log('arr0votesReceived', this.state.arr0votesReceived)
-      console.log('arr1votesReceived', this.state.arr1votesReceived)
-      console.log('arr2votesReceived', this.state.arr2votesReceived)
-      console.log('arr3votesReceived', this.state.arr3votesReceived)
+      // console.log('FUNCTION GIVE POINTS')
+      // console.log('arr1votedto', this.state.arr1votedTo)
+      // console.log('arr2votedto', this.state.arr2votedTo)
+      // console.log('arr3votedto', this.state.arr3votedTo)
+      // console.log('arr0votesReceived', this.state.arr0votesReceived)
+      // console.log('arr1votesReceived', this.state.arr1votesReceived)
+      // console.log('arr2votesReceived', this.state.arr2votesReceived)
+      // console.log('arr3votesReceived', this.state.arr3votesReceived)
 
       let arr0round = 0;
       let arr1round = 0;
@@ -369,7 +369,7 @@ class Game extends Component {
       playersArr[1].points = roundPoints1
       playersArr[2].points = roundPoints2
       playersArr[3].points = roundPoints3
-      console.log('hola', roundPoints0)
+      // console.log('hola', roundPoints0)
       playersArr.push(playersArr[0]);
       playersArr.shift();
       

@@ -8,7 +8,7 @@ class EditCard extends Component{
 
   constructor(props) {
 
-    console.log(props)
+    
     super(props);
     this.state = {
         name:"",
@@ -16,7 +16,7 @@ class EditCard extends Component{
         id:this.props.match.params.id
     }
 
-    console.log('esto viene de props', this.props.match.params.id)
+    
       
     };
     
@@ -26,14 +26,13 @@ class EditCard extends Component{
     event.preventDefault();
     const {id, image, name } = this.state;
 
-    console.log('esto es lo que hay en el estado',this.state)
-    console.log('uploadimage -> form submit', { id, image, name });
+    
     Prof.editCard({id, image, name });
     
     this.setState({ image:"",name: ""});
     this.props.history.push("/profile");
 
-    console.log(this.props)
+   
     
   };
 

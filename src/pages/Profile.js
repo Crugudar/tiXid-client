@@ -32,7 +32,7 @@ class Profile extends Component {
   }
 
   handleFileUpload = async (event) => {
-    console.log("the file to be uploaded is: ", event.target.files[0]);
+    //console.log("the file to be uploaded is: ", event.target.files[0]);
 
     const uploadData = new FormData();
 
@@ -41,7 +41,7 @@ class Profile extends Component {
     try {
       const res = await Prof.handleUpload(uploadData);
 
-      console.log("response is", res);
+      // console.log("response is", res);
 
       this.setState({ image: res.secure_url });
     } catch (error) {
@@ -55,22 +55,22 @@ class Profile extends Component {
     try {
       const author = this.state.user._id;
       const image = this.state.image;
-      console.log("JHOLA CLAUDIA", image, author);
+      
       const res = await Prof.addPhoto({ image, author });
 
-      console.log("added", res);
+      
       this.setState({ image: "" });
-      console.log("pastanaga");
+      
       window.location.reload();
     } catch (error) {
-      console.log("while adding the movie error", error);
+      console.log("while adding the image error", error);
     }
   };
 
   delete(e, card) {
     console.log(this.state.user._id);
     Prof.deleteCard(card.eachCard._id, this.state.userId);
-    console.log("props del profile", this.props);
+    // console.log("props del profile", this.props);
     this.props.history.push("/profile");
     window.location.reload();
   }

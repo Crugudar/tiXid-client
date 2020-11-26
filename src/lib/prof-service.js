@@ -17,12 +17,12 @@ class Prof {
 
   editCard({id, image, name }) {
 
-    console.log('aquí ha llegado a service',id)
+    
     return this.profile.post(`/profile/editCard/${id}`, {id, image, name}).then(({ data }) => data);
   }
 
   deleteCard(cardId, userId) {
-    console.log('serviceeeeeeeeeeeeeeeeeeeee',userId);
+    
     return this.profile.delete(`/profile/deleteCard/${userId}/${cardId}`, {cardId, userId}).then(({ data }) => data);
   }
 
@@ -32,7 +32,7 @@ class Prof {
  }
 
  handleUpload = async (theFile) => {
-  console.log("file in service: " , theFile)
+  // console.log("file in service: " , theFile)
 
   try {
       const res = await this.profile.post("/profile/upload", theFile)
@@ -43,7 +43,7 @@ class Prof {
 }
 
 addPhoto({image, author}) {
-  console.log('serviceeeeeeeeeeeeeeeeeeeee',author, image);
+  
  return this.profile.post(`/profile/addPhoto/${author}`, {author, image})
  .then(({ data }) => data);
 

@@ -33,7 +33,7 @@ class Hand extends Component {
     })
     .then(() =>{
     let manos=this.dealHand(this.state.cards,4)
-    console.log(manos)
+    
     this.setState({
         playerhands:{
             player1:manos[0],
@@ -80,7 +80,7 @@ class Hand extends Component {
     this.state.visible.forEach(playerhand=>{
         return playerhand
     })
-    console.log('piripippppp',this.state.playerhands.player1[0]?.url)
+    
     return (
       <>
       {this.state.playerhands.player1.length? (<>

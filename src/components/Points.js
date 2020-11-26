@@ -39,10 +39,10 @@ class Points extends Component {
         let arr1temp = 0;
         let arr2temp = 0;
         let arr3temp = 0;
-        console.log('FUNCTION 22222222222222222222222222222')
-        console.log('arr1votedto ON F2', this.state.arr1votedTo)
-        console.log('arr2votedto ON F2', this.state.arr2votedTo)
-        console.log('arr3votedto ON F2', this.state.arr3votedTo)
+        // console.log('FUNCTION 22222222222222222222222222222')
+        // console.log('arr1votedto ON F2', this.state.arr1votedTo)
+        // console.log('arr2votedto ON F2', this.state.arr2votedTo)
+        // console.log('arr3votedto ON F2', this.state.arr3votedTo)
         if (this.state.arr1votedTo == 0) {
           arr0temp++;
         } else if (this.state.arr1votedTo == 2) {
@@ -66,11 +66,11 @@ class Points extends Component {
         } else if (this.state.arr3votedTo == 1) {
           arr1temp++;
         }
-        console.log('FUNCTION votes function')
-        console.log('arr0temp', arr0temp)
-        console.log('arr1temp', arr1temp)
-        console.log('arr2temp', arr2temp)
-        console.log('arr3temp', arr3temp)
+        // console.log('FUNCTION votes function')
+        // console.log('arr0temp', arr0temp)
+        // console.log('arr1temp', arr1temp)
+        // console.log('arr2temp', arr2temp)
+        // console.log('arr3temp', arr3temp)
         
         this.setState({
         arr0votesReceived: arr0temp,
@@ -80,11 +80,11 @@ class Points extends Component {
         })
       
 
-        console.log(' after set state', this)
-        console.log('arr0votesReceived', this.state.arr0votesReceived)
-        console.log('arr1votesReceived', this.state.arr1votesReceived)
-        console.log('arr2votesReceived', this.state.arr2votesReceived)
-        console.log('arr3votesReceived', this.state.arr3votesReceived)
+        // console.log(' after set state', this)
+        // console.log('arr0votesReceived', this.state.arr0votesReceived)
+        // console.log('arr1votesReceived', this.state.arr1votesReceived)
+        // console.log('arr2votesReceived', this.state.arr2votesReceived)
+        // console.log('arr3votesReceived', this.state.arr3votesReceived)
 
         //this.givePoints()
       };
@@ -96,14 +96,14 @@ class Points extends Component {
 
        //this.votesFunction()
 
-        console.log('FUNCTION GIVE POINTS')
-        console.log('arr1votedto', this.state.arr1votedTo)
-        console.log('arr2votedto', this.state.arr2votedTo)
-        console.log('arr3votedto', this.state.arr3votedTo)
-        console.log('arr0votesReceived', this.state.arr0votesReceived)
-        console.log('arr1votesReceived', this.state.arr1votesReceived)
-        console.log('arr2votesReceived', this.state.arr2votesReceived)
-        console.log('arr3votesReceived', this.state.arr3votesReceived)
+        // console.log('FUNCTION GIVE POINTS')
+        // console.log('arr1votedto', this.state.arr1votedTo)
+        // console.log('arr2votedto', this.state.arr2votedTo)
+        // console.log('arr3votedto', this.state.arr3votedTo)
+        // console.log('arr0votesReceived', this.state.arr0votesReceived)
+        // console.log('arr1votesReceived', this.state.arr1votesReceived)
+        // console.log('arr2votesReceived', this.state.arr2votesReceived)
+        // console.log('arr3votesReceived', this.state.arr3votesReceived)
 
         let arr0round = 0;
         let arr1round = 0;
@@ -140,7 +140,7 @@ class Points extends Component {
         players[1].points = roundPoints1
         players[2].points = roundPoints2
         players[3].points = roundPoints3
-        console.log('hola', roundPoints0)
+        // console.log('hola', roundPoints0)
         players.push(players[0]);
         players.shift();
         

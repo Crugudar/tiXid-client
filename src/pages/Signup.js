@@ -8,7 +8,7 @@ class Signup extends Component {
   handleFormSubmit = async (event) => {
     event.preventDefault();
     const {username, email, password } = this.state;
-    console.log('Signup -> form submit', { username, email, password });
+    // console.log('Signup -> form submit', { username, email, password });
     this.props.signup({ username, email, password });
   };
 

@@ -19,7 +19,7 @@ class AddCard extends Component {
   };
 
   handleFileUpload = async (event) => {
-    console.log("the file to be uploaded is: ", event.target.files[0]);
+    // console.log("the file to be uploaded is: ", event.target.files[0]);
 
     const uploadData = new FormData();
 
@@ -28,7 +28,7 @@ class AddCard extends Component {
     try {
       const res = await Prof.handleUpload(uploadData);
 
-      console.log("response is", res);
+      
 
       this.setState({ image: res.secure_url });
     } catch (error) {
@@ -42,9 +42,9 @@ class AddCard extends Component {
     try {
       //const {image, name, author } = this.state;
       const res = await Prof.addCard(this.state);
-      console.log("added", res);
+      
       this.setState({ image: "", name: "" });
-      console.log(this.props.history);
+      
       window.location.reload();
     } catch (error) {
       console.log("while adding the movie error", error);

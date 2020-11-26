@@ -77,7 +77,7 @@ class ProfProvider extends React.Component {
 
     try {
       const editedCard= await prof.deleteCard({_id});
-      console.log("Card deleted", editedCard);
+      
     } catch (error) {
       console.log(error)
     }
@@ -90,7 +90,7 @@ class ProfProvider extends React.Component {
 
     const { isLoading, user,  card } = this.state;
     const { addCard, deleteCard, editCard } = this;
-    console.log(addCard);
+    
     return isLoading ?(
       
       // si está loading, devuelve un <div> y sino devuelve un componente <Provider> con un objeto con los valores: { isLoggedin, user, login, logout, signup}
