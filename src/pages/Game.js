@@ -36,7 +36,7 @@ class Game extends Component {
         selected:[],
         info:[],
         currentplayer:0,
-        theChosenOne:"",
+        theChosenOne:{},
         players:[],
        
     }
@@ -194,22 +194,40 @@ class Game extends Component {
     }    
     
      selectCard(e){
-        const {name, index}=e.target
+        const {name}=e.target
+       
 
         this.setState({
-            theChosenOne:{index,name},
+            theChosenOne:{name},
         })
 
-        console.log(name)
         
          
     }
 
     sumbitTheChosenOne(){
-        let newHand=[...this.state.yourhand]; 
-        socket.emit('cardselected',this.state.theChosenOne.name); 
-       
-        newHand.splice(this.state.theChosenOne.index,1)
+
+        
+        let newHand=[...this.state.yourhand];
+        newHand.find((o, i) => {
+            if (o.url === this.state.theChosenOne.name) {
+                newHand.splice(i,1) 
+                return true; 
+            }
+        });
+
+        // let index=this.state.yourhand.indexOf(this.state.theChosenOne.name) 
+
+        // console.log('antes de emitiir y con el estado',index)
+
+        socket.emit('cardselected',this.state.theChosenOne.name);
+
+        // let cardIndex=newHand.indexOf(this.state.theChosenOne.name);
+
+        // console.log('después de emitiir y con el estado',index)
+        // console.log('después de emitiir y con la copia', cardIndex) 
+        
+        // newHand.splice(this.state.theChosenOne.index,1)
 
         this.setState({
            yourhand:newHand,
@@ -234,15 +252,19 @@ class Game extends Component {
                             <div className="player">
                                 <div className="selected">
                                     <img src={this.state.selected[0]} alt=""/>
+                                    <h3>1</h3>
                                 </div>
                                 <div className="selected">
                                     <img src={this.state.selected[1]} alt=""/>
+                                    <h3>2</h3>
                                 </div>
                                 <div className="selected">
                                     <img src={this.state.selected[2]} alt=""/>
+                                    <h3>3</h3>
                                 </div>
                                 <div className="selected">
                                     <img src={this.state.selected[3]} alt=""/>
+                                    <h3>4</h3>
                                 </div>
                             </div>:<><h1 className="">Here you will see everybody's cards in each round</h1>
                                         </>}
@@ -276,15 +298,15 @@ class Game extends Component {
         </div>
        
       </div>
-        <button onClick={()=>this.sumbitTheChosenOne()}>Enviar</button>
+        <button onClick={()=>this.sumbitTheChosenOne()}>Send your card</button>
       </div>
       
       </>):<div className="allhands"><button onClick={()=>this.getCards()}> Get cards</button></div>}
         <div className="ChatRoom">
-            <div>
+            
                 <ChatTable messages={this.state.messages} user={this.state.user}/>
                 <form action="" onSubmit={(e)=>this.handleSubmit(e)}>
-                    <label htmlFor=""> Message</label>
+                    
                     <input id="message"
                                 type="text"
                                 label="Message"
@@ -293,11 +315,8 @@ class Game extends Component {
                                 value={this.state.newMessage}
                                 autoComplete="off"/>
                         
-                    <button type="submit">Send</button>
+                    <button id="chatButton" type="submit">Send</button>
                 </form>
-                </div> 
-
-       
         <div>
         <>
       

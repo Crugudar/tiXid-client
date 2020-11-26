@@ -165,7 +165,7 @@ class Points extends Component {
             <form className="pointsform" onSubmit={this.bothFunctions}>
              <div className="initial">
                 <h2>Initial player</h2> 
-                <div className="row">
+                <div className="turn">
                 <p>{this.state.players[0].name} : {this.state.players[0].points} points</p>  
                 </div> 
                       
@@ -175,7 +175,7 @@ class Points extends Component {
              <div className="restOfPlayers">
              <div className="playerColumn">
                 <label>{this.state.players[1].name} : {this.state.players[1].points} points</label>
-                 <p>Votes to:</p>
+                
                 <div>
                     <p>{this.state.players[0].name}</p>
                     <input id="input1" type='radio' name='arr1votedTo' value= '0'  onChange={this.handleChange} ></input>
@@ -194,7 +194,7 @@ class Points extends Component {
              </div>
              <div className="playerColumn">
                 <label>{this.state.players[2].name} : {this.state.players[2].points} points</label>
-                <p>Votes to:</p>
+                
                 <div>
                     <p>{this.state.players[0].name}</p>
                     <input type='radio' name='arr2votedTo' value ='0' onChange={this.handleChange}></input>
@@ -215,18 +215,21 @@ class Points extends Component {
              <div className="playerColumn">
                 <label>{this.state.players[3].name} : {this.state.players[3].points} points</label>
                 
-                <p>Votes to:</p>
+                
                 <div>
-                    <input type='radio' name='arr3votedTo' value='0' onChange={this.handleChange}></input>
                     <p>{this.state.players[0].name}</p>
+                    <input type='radio' name='arr3votedTo' value='0' onChange={this.handleChange}></input>
+                    
                 </div>
                 <div>
-                    <input type='radio' name='arr3votedTo' value='1' onChange={this.handleChange}></input>
                     <p>{this.state.players[1].name}</p>
+                    <input type='radio' name='arr3votedTo' value='1' onChange={this.handleChange}></input>
+                    
                 </div>
                 <div>
-                    <input type='radio' name='arr3votedTo' value='2' onChange={this.handleChange} ></input>
                     <p>{this.state.players[2].name}</p>
+                    <input type='radio' name='arr3votedTo' value='2' onChange={this.handleChange} ></input>
+                    
                 </div>
              </div>
              </div>

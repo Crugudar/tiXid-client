@@ -1,0 +1,9 @@
+.scrolling-box {
+    
+    display: block;
+    height: 83%;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    text-align: center;
+    font-size:20px;
+  }

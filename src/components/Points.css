@@ -4,11 +4,27 @@
     justify-content: center;
     align-items: center;
     margin:auto;
-    color:white;
-    font-size:20px;
+    color:rgb(77, 9, 9);
+    font-size:25px;
+    font-size:;
 }
 
+.pointsform label{
+ background-color: rgb(77, 9, 9);
+ border-radius:5%;
+ padding:5px;
+ margin-bottom: 10px;
+ color:white;
+}
 
+.turn{
+    background-color: rgb(77, 9, 9);
+    border-radius:5%;
+    padding:5px;
+    margin-bottom: 10px;
+    text-align:center;
+    color:white; 
+}
 
 
   
@@ -16,13 +32,14 @@
   padding: 10px 0px;
  
   
-  }
+}
 .restOfPlayers{
     display: flex;
     flex-direction: row;
 }
 .playerColumn{
 margin:5px 10px;
+text-shadow: -0.5px 0 black, 0 0.5px black, 0.5px 0 black, 0 -0.5px black; 
 }
 
 /* #input1{
