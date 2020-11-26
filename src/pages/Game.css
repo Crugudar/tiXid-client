@@ -2,7 +2,7 @@
     display: flex;
     flex-wrap: wrap;
     background-color:rgb(210, 230, 126);
-    height:100vh;
+    height:120vh;
     background-image: url('../images/hojitas.jpg');
     background-repeat: repeat;
     background-size: cover;
@@ -15,7 +15,7 @@
     flex-direction: column;
     text-align: center; 
     justify-content: center;
-    width: 65%;
+    width: 64%;
 
 }
 
@@ -28,7 +28,7 @@
 }
 
 .card, .selected{
-    width:25%;   
+    width:22%;   
 }
 /* .selected{
     display:flex;
@@ -60,12 +60,11 @@
 }
 
 .tableDefault{
-    min-height: 400px;
-     
+    min-height: 400px; 
     text-align: center;
     display:flex; 
     justify-content: center;
-    width: 65%;
+    width: 63%;
     flex-direction:column;
  
 }
