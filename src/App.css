@@ -8,22 +8,33 @@
 }
 
 nav.navbar { 
-  
-  
-  background: #686de0; 
+   position: fixed; 
+  top: 0; 
+  width: 100%; 
+  background: transparent; 
+  display:flex;
+  justify-content: center;
 }
 
-nav.navbar .navbar-user{
-  margin-left: 10px;
-  color: white;
+
+
+.navbar-button {
+  font-weight: bold;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 8px 40px;
+  color: rgb(95, 20, 20); 
+  border: rgb(95, 20, 20) 2px solid;
+  background-color: rgba(251, 232, 210, 0.60);
+  margin: 20px 40px;
+  border-radius: 5px;
 }
 
-button.navbar-button {
-  padding: 0 20px;
-  width: 100px;
-  border-radius: 3px;
-  margin: 0 10px;
+ .navbar-button:hover {
+  background-color: rgb(95, 20, 20);
+  color: rgb(212, 189, 161)
 }
+
 
 #home-btn {
   color: white;
