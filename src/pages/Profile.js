@@ -10,7 +10,7 @@ import "./Profile.css";
 
 class Profile extends Component {
   constructor(props) {
-    console.log("props del perfil", props);
+   
     super(props);
     this.state = {
       cards: [],
@@ -21,7 +21,7 @@ class Profile extends Component {
   }
 
   componentDidMount() {
-    return Prof.cardList(this.state.user._id)
+     return Prof.cardList(this.state.user._id)
       .then((resp) => {
         // console.log(resp)
         this.setState({
@@ -68,10 +68,10 @@ class Profile extends Component {
   };
 
   delete(e, card) {
-    console.log(this.state.user._id);
+    // console.log(this.state.user._id);
     Prof.deleteCard(card.eachCard._id, this.state.userId);
     // console.log("props del profile", this.props);
-    this.props.history.push("/profile");
+    //this.props.history.push("/profile");
     window.location.reload();
   }
 
@@ -80,6 +80,8 @@ class Profile extends Component {
   }
 
   render() {
+
+    
     return (
       <>
         <Navbar />

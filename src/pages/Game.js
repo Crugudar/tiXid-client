@@ -384,6 +384,14 @@ class Game extends Component {
       event.preventDefault()
       await this.votesFunction()
       this.givePoints()
+      let newPoints=this.state.playersArr
+      await socket.emit('reloadPoints', newPoints);
+      await socket.on('reloadPoints', newPoints=>{
+        
+        this.setState({
+          playersArr:newPoints,
+        })
+      })
     } 
 
   render(){
