@@ -16,7 +16,7 @@ function Rules(props) {
     <div>
       
       <>
-          <Navbar />
+         
              
        
           
@@ -27,6 +27,7 @@ function Rules(props) {
             </video>
 
             <div className={classes.Content}>
+            <Navbar/>
                 <div className={classes.SubContent} >
                 <div className="rules left">
                     <h1>The storyteller</h1>

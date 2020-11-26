@@ -43,24 +43,21 @@
       font-weight: bold;
   }
   .SubContent button {
-      font-weight: bold;
-      margin-top: 40px;
-      color: rgb(95, 20, 20);
-      border: rgb(95, 20, 20) 2px solid;
-      padding: 20px 5px;
-      background-color: hsla(0, 0%, 0%, 0);
-      font-size: 1.25rem;
-      border-radius: 5px;
-      cursor:pointer;
-      width: 12rem;
-      font-size: 2rem;
-      background-color: rgba(210, 105, 30, 0.219);
-      
-
-  }
-  .SubContent button:hover {
-      background-color: rgb(95, 20, 20);
-      color: rgb(212, 189, 161)
-  }
+    font-weight: bold;
+    margin-top: 40px;
+    border: rgb(95, 20, 20) 2px solid;
+    color: rgb(212, 189, 161);
+    background-color: rgba(95, 20, 20, 1);
+    padding: 20px 5px;
+    font-size: 1.25rem;
+    border-radius: 5px;
+    cursor:pointer;
+    width: 12rem;
+    font-size: 2rem;
+}
+.SubContent button:hover {
+    background-color: rgb(212, 189, 161);
+    color: rgb(95, 20, 20);
+}
 
   /* intento de nav*/
