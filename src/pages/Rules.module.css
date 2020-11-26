@@ -1,6 +1,9 @@
 .Container {
-  position: relative;
-  min-height: 300px;
+    position: relative;
+    min-height: 300px;
+    
+    
+    
 }
 /* Style the video: 100% width and height to cover the entire window */
 .Video {

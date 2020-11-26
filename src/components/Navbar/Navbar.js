@@ -18,15 +18,11 @@ class Navbar extends Component {
           
            <div className="nav-links"></div> 
             
-            
-           
-
-        <Link to={"/"} id="home-btn">
+           <Link to={"/"} id="home-btn">
             <button className="navbar-button" >
               Home
             </button>
-        </Link>
-            
+        </Link>  
           
         <Link to={"/profile"} id="home-btn">
             <button className="navbar-button" >
@@ -41,10 +37,10 @@ class Navbar extends Component {
             </button>
         </Link>
 
+      
         <button className="navbar-button" onClick={logout}>
               Logout
-        </button>
-        
+            </button>
             </div>
          
        

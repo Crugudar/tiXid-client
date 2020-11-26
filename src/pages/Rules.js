@@ -16,7 +16,7 @@ function Rules(props) {
     <div>
       
       <>
-         
+          
              
        
           
