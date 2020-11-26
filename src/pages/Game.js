@@ -542,7 +542,7 @@ class Game extends Component {
                         
                     <button id="chatButton" type="submit">Send</button>
                 </form>
-                <ChatTable messages={this.state.messages} user={this.state.user}/>
+                
            
                 </div> 
 

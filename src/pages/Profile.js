@@ -5,7 +5,7 @@ import { withAuth } from "../lib/AuthProvider";
 import Prof from "../lib/prof-service";
 import { Link } from "react-router-dom";
 import EditCard from "../pages/EditCard";
-import Points from "../components/Points";
+
 import "./Profile.css";
 
 class Profile extends Component {
@@ -71,7 +71,7 @@ class Profile extends Component {
     console.log(this.state.user._id);
     Prof.deleteCard(card.eachCard._id, this.state.userId);
     console.log("props del profile", this.props);
-    this.props.history.push("/profile");
+    //this.props.history.push("/profile");
     window.location.reload();
   }
 
