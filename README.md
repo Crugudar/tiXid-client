@@ -1,4 +1,4 @@
-# tiXid-server
+# tiXid-client
 ## Multiplayer Game Online!
 
 ## MVP
