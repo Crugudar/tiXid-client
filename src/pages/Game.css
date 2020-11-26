@@ -15,7 +15,7 @@
     flex-direction: column;
     text-align: center; 
     justify-content: center;
-    width: 64%;
+    width: 63%;
 
 }
 
@@ -60,7 +60,7 @@
 }
 
 .tableDefault{
-    min-height: 400px; 
+    
     text-align: center;
     display:flex; 
     justify-content: center;
@@ -76,12 +76,13 @@
 }
 .ChatRoom{
     float: right;
-    width:33%;
-    /* margin:auto; */
+    width:30%;
+    margin:auto;
+    margin-top: 0px;
     background-color: rgba(240, 234, 222, 0.842);
     border: 12px groove rgba(255,173,26,0.88);
     border-radius: 20px;
-    height: 40%;
+    height: 30%;
 }
 #message{
     width: 96%;
@@ -90,9 +91,10 @@
     display:none;
 }
 .pointsdiv{
-    width: 33%;
+    width: 30%;
     float:right;
-    margin:auto;
+    margin: auto;
+    
     background-color: rgba(240, 234, 222, 0.842);
     border: 12px groove rgba(255,173,26,0.88);
     border-radius: 20px;
@@ -112,6 +114,7 @@ button{
     border-radius: 5px;
     font-size: 20px;
     font-weight: bold;
+    align-self: center;
     
 }
 
@@ -124,3 +127,7 @@ button:focus {
     color: rgb(212, 189, 161)
 }
 
+.getout{
+    align-self: flex-start;
+    
+}
