@@ -1,20 +1,17 @@
 import React, { Component } from "react";
 
-import Prof from '../lib/prof-service'
+import Prof from "../lib/prof-service";
 
 class AddCard extends Component {
-
-  constructor(props){
+  constructor(props) {
     super(props);
-    
-    this.state = { 
-      image:"",name: "", 
-      author:props.user._id
+
+    this.state = {
+      image: "",
+      name: "",
+      author: props.user._id,
     };
-
   }
-  
-
 
   handleChange = (event) => {
     const { name, value } = event.target;
@@ -22,73 +19,76 @@ class AddCard extends Component {
   };
 
   handleFileUpload = async (event) => {
-      console.log("the file to be uploaded is: ", event.target.files[0])
+    console.log("the file to be uploaded is: ", event.target.files[0]);
 
-      const uploadData = new FormData()
-      
-      uploadData.append("image", event.target.files[0])
+    const uploadData = new FormData();
 
-      try {
-        const res = await Prof.handleUpload(uploadData)
+    uploadData.append("image", event.target.files[0]);
 
-        console.log("response is", res)
+    try {
+      const res = await Prof.handleUpload(uploadData);
 
-        this.setState({image: res.secure_url})
-        
-      } catch (error){
-        console.log("while uploading", error)
-      }
-     
-  }
+      console.log("response is", res);
+
+      this.setState({ image: res.secure_url });
+    } catch (error) {
+      console.log("while uploading", error);
+    }
+  };
 
   handleFormSubmit = async (event) => {
     event.preventDefault();
 
     try {
       //const {image, name, author } = this.state;
-      const res = await Prof.addCard(this.state)
-      console.log("added",res)
-      this.setState({image:"", name:""})
-      console.log(this.props.history)
-      window.location.reload()
-      
-    } catch (error){
-      console.log("while adding the movie error",error)
+      const res = await Prof.addCard(this.state);
+      console.log("added", res);
+      this.setState({ image: "", name: "" });
+      console.log(this.props.history);
+      window.location.reload();
+    } catch (error) {
+      console.log("while adding the movie error", error);
     }
-    
+
     /* const {image, name, author } = this.state;
     console.log('uploadimage -> form submit', { image, name, author });
     Prof.addCard({image, name, author });
     this.setState({ image:"",name: ""}) */
   };
-  
 
   render() {
     const { image, name } = this.state;
     return (
-      <div>
-        <h1>Create your Card</h1>
+      <div className="addCard">
+        <h2>Create your Cards!</h2>
 
-        <form onSubmit={this.handleFormSubmit}>
-        <label>Name:</label>
-          <input
-            type='text'
-            name='name'
-            value={name}
-            onChange={this.handleChange}
-          />
-
-         
-         <label>Image:</label>
-          <input type='file' name='image' onChange={event => this.handleFileUpload(event)} />
-          <button type="submit">Save the new Card</button>
-
+        <form className="addCardsForm" onSubmit={this.handleFormSubmit}>
+          <div className="cardTitle">
+            <label>Card's Title:</label>
+            <input
+              id="cardTitleInput"
+              type="text"
+              name="name"
+              value={name}
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className="selectCardPic">
+            <label for="cardPicUpload">Choose an image:</label>
+            <input
+              id="cardPicUpload"
+              type="file"
+              name="image"
+              onChange={(event) => this.handleFileUpload(event)}
+            />
+          </div>
+          <button className="cardPicButton" type="submit">
+            Upload That Card
+          </button>
         </form>
-
-        
       </div>
     );
   }
 }
 
-export default AddCard ;
+export default AddCard;

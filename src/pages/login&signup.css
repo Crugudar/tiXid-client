@@ -133,7 +133,7 @@ input[type = submit]{
     text-align: center;
     border-right: none;
     border-left: none;
-    background-color: rgba(210, 105, 30, 0.219);
+    background-color: rgba(210, 105, 30, 0.19);
     margin:1rem;
     color:rgb(95, 20, 20); 
     font-size: 1.3rem;

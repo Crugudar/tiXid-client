@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar/Navbar";
 import { Link } from "react-router-dom";
 import "../pages/login&signup.css";
 import classes from '../components/BackgroundVideo.module.css'
+import Header from '../components/Navbar/Navbar'
 
 
 
@@ -15,7 +16,8 @@ function Home(props) {
     <div>
       
       <>
-          <Navbar />
+          
+        
              
        
           
@@ -24,8 +26,10 @@ function Home(props) {
                 <source src={videoSource} type="video/mp4" />
                 Your browser does not support the video tag.
             </video>
+            
 
             <div className={classes.Content}>
+            <Navbar />
                 <div className={classes.SubContent} >
                 <p>Welcome to Dixit {props.user.username && props.user.username}!</p>
           <br />
